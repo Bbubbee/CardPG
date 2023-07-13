@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://dim4havfaaoc0"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_qwbgn"]
+[ext_resource type="Texture2D" uid="uid://ypc0hl0s73cm" path="res://Assets/Images/Rat.png" id="2_y78ws"]
+
+[sub_resource type="Animation" id="Animation_yyqpm"]
+resource_name = "Shake"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, 2), Vector2(-2, -2), Vector2(2, 2), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_edudm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o417c"]
+resource_name = "Attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcbya"]
+_data = {
+"Attack": SubResource("Animation_o417c"),
+"RESET": SubResource("Animation_edudm"),
+"Shake": SubResource("Animation_yyqpm")
+}
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_qwbgn")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_y78ws")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -11.0
+offset_top = -25.0
+offset_right = 11.0
+offset_bottom = -16.0
+text = "25hp
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qcbya")
+}
