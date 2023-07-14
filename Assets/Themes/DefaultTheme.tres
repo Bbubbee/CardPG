@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://20vsd7ysgdr1"]
 
-[ext_resource type="StyleBox" uid="uid://dc7xspv15bno4" path="res://Assets/Resources/Button9Frame.tres" id="1_giphq"]
 [ext_resource type="FontVariation" uid="uid://dg44tyfwlhfrd" path="res://Assets/Resources/DefaultFont.tres" id="1_oedww"]
-[ext_resource type="StyleBox" uid="uid://dlpsc24abvrh" path="res://Assets/Resources/Button9FrameHover.tres" id="2_coi7q"]
-[ext_resource type="StyleBox" uid="uid://buot0g2cp8fy8" path="res://Assets/Resources/Button9FramePressed.tres" id="3_islj5"]
+[ext_resource type="StyleBox" uid="uid://dc7xspv15bno4" path="res://Assets/Resources/Button9Slice.tres" id="1_tnupn"]
+[ext_resource type="StyleBox" uid="uid://dlpsc24abvrh" path="res://Assets/Resources/Button9SliceHover.tres" id="2_olhab"]
+[ext_resource type="StyleBox" uid="uid://buot0g2cp8fy8" path="res://Assets/Resources/Button9SlicePressed.tres" id="3_4jeqw"]
 [ext_resource type="StyleBox" uid="uid://delqqn7bv7rrp" path="res://Assets/Resources/Panel9Frame.tres" id="4_s5afr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5ini"]
@@ -17,11 +17,11 @@ Button/colors/font_hover_color = Color(1, 1, 1, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/colors/icon_hover_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/styles/disabled = ExtResource("1_giphq")
+Button/styles/disabled = ExtResource("1_tnupn")
 Button/styles/focus = SubResource("StyleBoxEmpty_v5ini")
-Button/styles/hover = ExtResource("2_coi7q")
-Button/styles/normal = ExtResource("1_giphq")
-Button/styles/pressed = ExtResource("3_islj5")
+Button/styles/hover = ExtResource("2_olhab")
+Button/styles/normal = ExtResource("1_tnupn")
+Button/styles/pressed = ExtResource("3_4jeqw")
 LineEdit/styles/focus = ExtResource("4_s5afr")
 LineEdit/styles/normal = ExtResource("4_s5afr")
 LineEdit/styles/read_only = ExtResource("4_s5afr")

@@ -1,7 +1,7 @@
 extends Node
 
 @onready var enemy = $Enemy
-@onready var sword_button = $UI/SwordButton
+@onready var sword_button = $UI/BattleActionButtons/SwordButton
 
 func _on_sword_button_pressed():
 	if enemy != null:

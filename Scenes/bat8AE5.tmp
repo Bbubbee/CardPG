@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://cy2ytcema5j74"]
+
+[ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
+[ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
+[ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_ishl0"]
+[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="2_aivef"]
+[ext_resource type="PackedScene" uid="uid://dim4havfaaoc0" path="res://Scenes/enemy.tscn" id="4_golvm"]
+
+[node name="Battle" type="Node"]
+script = ExtResource("1_amr2d")
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("2_aivef")
+
+[node name="Dungeon" type="Sprite2D" parent="."]
+position = Vector2(45, 80)
+texture = ExtResource("1_ishl0")
+
+[node name="MobileRpgMockup" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(45, 80)
+texture = ExtResource("1_ikiff")
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("4_golvm")]
+position = Vector2(45, 33)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="GridContainer" parent="UI"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 72.0
+offset_right = 81.0
+offset_bottom = 136.0
+theme_override_constants/h_separation = 8
+columns = 2
+
+[node name="SwordButton" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "Sword
+"
+
+[node name="SwordButton2" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "Sword
+"
+
+[node name="SwordButton3" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "Sword
+"
+
+[node name="SwordButton4" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton5" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton6" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton7" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton8" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="StatsPanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 50.0
+offset_right = 87.0
+offset_bottom = 70.0
+
+[node name="TextboxPanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 137.0
+offset_right = 92.0
+offset_bottom = 160.0
+
+[connection signal="died" from="Enemy" to="." method="_on_enemy_died"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton2" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton3" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton4" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton5" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton6" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton7" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/GridContainer/SwordButton8" to="." method="_on_sword_button_pressed"]

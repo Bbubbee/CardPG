@@ -1,12 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy2ytcema5j74"]
+[gd_scene load_steps=7 format=3 uid="uid://cy2ytcema5j74"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
 [ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_ishl0"]
+[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="2_aivef"]
 [ext_resource type="PackedScene" uid="uid://dim4havfaaoc0" path="res://Scenes/enemy.tscn" id="4_golvm"]
+[ext_resource type="Script" path="res://Scripts/StatsPanel.gd" id="6_i8yhs"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_amr2d")
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("2_aivef")
 
 [node name="Dungeon" type="Sprite2D" parent="."]
 position = Vector2(45, 80)
@@ -37,15 +42,42 @@ offset_left = 3.0
 offset_top = 50.0
 offset_right = 87.0
 offset_bottom = 70.0
+script = ExtResource("6_i8yhs")
 
-[node name="SwordButton" type="Button" parent="UI"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 73.0
-offset_right = 41.0
-offset_bottom = 86.0
-text = "Sword
-"
+[node name="StatsContainer" type="HBoxContainer" parent="UI/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "HP
+25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "AP
+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "MP
+10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextboxPanel" type="Panel" parent="UI"]
 layout_mode = 0
@@ -54,5 +86,72 @@ offset_top = 137.0
 offset_right = 92.0
 offset_bottom = 160.0
 
+[node name="BattleActionButtons" type="GridContainer" parent="UI"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 72.0
+offset_right = 81.0
+offset_bottom = 136.0
+theme_override_constants/h_separation = 8
+columns = 2
+
+[node name="SwordButton" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "Sword
+"
+
+[node name="SwordButton2" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton3" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton4" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton5" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton6" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton7" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[node name="SwordButton8" type="Button" parent="UI/BattleActionButtons"]
+custom_minimum_size = Vector2(32, 13)
+layout_mode = 2
+text = "
+"
+
+[connection signal="ap_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_ap_changed"]
+[connection signal="hp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_hp_changed"]
+[connection signal="mp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_mp_changed"]
 [connection signal="died" from="Enemy" to="." method="_on_enemy_died"]
-[connection signal="pressed" from="UI/SwordButton" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton2" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton3" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton4" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton5" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton6" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton7" to="." method="_on_sword_button_pressed"]
+[connection signal="pressed" from="UI/BattleActionButtons/SwordButton8" to="." method="_on_sword_button_pressed"]
