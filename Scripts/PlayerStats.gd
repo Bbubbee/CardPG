@@ -16,15 +16,17 @@ var mp = max_mp:
 	set = SetMp
 
 func SetHp(new_hp):
-	hp = min(new_hp, max_hp) 
+	hp = clamp(new_hp, 0, max_hp) 
 	emit_signal("hp_changed", hp)
 	
 func SetAp(new_ap):
-	ap = min(new_ap, max_ap) 
+	ap = clamp(new_ap, 0, max_ap) 
 	emit_signal("ap_changed", ap)
+	if ap == 0:
+		emit_signal("end_turn")
 
 func SetMp(new_mp):
-	mp = min(new_mp, max_mp) 
+	mp = clamp(new_mp, 0, max_mp) 
 	emit_signal("mp_changed", mp)
 
 

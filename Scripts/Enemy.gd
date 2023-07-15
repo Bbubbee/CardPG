@@ -1,31 +1,45 @@
 extends Node2D
 
 signal died 
-signal attack
+signal end_turn
 
 @onready var hp_label = $Label
 @onready var animation_player = $AnimationPlayer
 
-var hp = 25: 
-	set = SetHp
 var attack_damage = 3
+var hp = 25: 
+	set(new_hp):
+		hp = new_hp
+		hp_label.text = str(hp) + "hp"
+var target = null
+	# Temp solution: needed for DealDamage().
 
-func SetHp(new_hp): 
-	hp = new_hp
-	hp_label.text = str(hp) + "hp"
+
+func Attack(target) -> void:
+	await get_tree().create_timer(0.4).timeout 
+	animation_player.play("Attack")
+	self.target = target
+	await animation_player.animation_finished
+	self.target = null 
+	emit_signal("end_turn")
+
+func TakeDamage(amount): 
+	animation_player.play("Shake")
+	await animation_player.animation_finished
+	self.hp -= amount 
 	
-	if hp <= 0: 
+	if IsDead():
 		emit_signal("died") 
 		queue_free()
-	else: 		
-		animation_player.play("Shake") 
-		await animation_player.animation_finished
-		await get_tree().create_timer(0.2).timeout
+
+func DealDamage(): 
+	print("deal damage") 
+	target.hp -= attack_damage
+	
+func IsDead():
+	return hp <= 0  # If dead return true.
+
+
 		
-		# Attack player
-		animation_player.play("Attack")
-		await animation_player.animation_finished
+
 		
-		var battle_scene = get_tree().current_scene
-		var player = battle_scene.find_child("PlayerStats") 
-		player.hp -= attack_damage
