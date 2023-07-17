@@ -1,5 +1,7 @@
 extends Node
 
+var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
+
 signal end_turn
 signal hp_changed(val) 
 signal ap_changed(val)
@@ -16,6 +18,12 @@ var mp = max_mp:
 	set = SetMp
 @export var damage = 4
 @export var fireball_damage = 7
+
+func _ready():
+	battle_units.player = self
+
+func _exit_tree():
+	battle_units.player = null
 
 
 func SetHp(new_hp):

@@ -1,13 +1,11 @@
 extends "res://Scripts/Action Buttons/action_button.gd"
 
-
 const FIREBALL = preload("res://Scenes/fireball.tscn")
 
 
 func _on_pressed(): 
-	var main = get_tree().current_scene
-	var enemy = main.find_child("Enemy") 
-	var player = main.find_child("PlayerStats") 
+	var enemy = battle_units.enemy
+	var player = battle_units.player
 	
 	if enemy and player: 
 		if player.mp >= 8: 

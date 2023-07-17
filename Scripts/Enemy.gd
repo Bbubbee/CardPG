@@ -6,6 +6,8 @@ signal end_turn
 @onready var hp_label = $Label
 @onready var animation_player = $AnimationPlayer
 
+var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
+
 var attack_damage = 3
 var max_hp = 25
 var hp = max_hp: 
@@ -14,13 +16,16 @@ var hp = max_hp:
 		hp_label.text = str(hp) + "hp"
 var target = null  # Temp implementation: needed for DealDamage().
 
+func _ready():
+	battle_units.enemy = self
 
-func Attack(target) -> void:
+func _exit_tree():
+	battle_units.enemy = null
+
+func Attack() -> void:
 	await get_tree().create_timer(0.4).timeout 
-	animation_player.play("Attack")
-	self.target = target
-	await animation_player.animation_finished
-	self.target = null 
+	animation_player.play("Attack")  # Calls DealDamage().
+	await animation_player.animation_finished  
 	emit_signal("end_turn")
 
 func TakeDamage(amount): 
@@ -32,8 +37,7 @@ func TakeDamage(amount):
 		Dies()
 
 func DealDamage(): 
-	print("deal damage") 
-	target.hp -= attack_damage
+	battle_units.player.hp -= attack_damage
 	
 func Dies(): 
 	animation_player.play("Fades")
@@ -43,6 +47,9 @@ func Dies():
 	
 func IsDead():
 	return hp <= 0  # If dead return true.
+	
+
+	
 
 
 		

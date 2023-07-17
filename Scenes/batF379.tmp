@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://cy2ytcema5j74"]
+
+[ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
+[ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
+[ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_ishl0"]
+[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="2_aivef"]
+[ext_resource type="PackedScene" uid="uid://dim4havfaaoc0" path="res://Scenes/enemy.tscn" id="4_golvm"]
+[ext_resource type="Script" path="res://Scripts/StatsPanel.gd" id="6_i8yhs"]
+[ext_resource type="PackedScene" uid="uid://dmg7yj2mknkn4" path="res://Scenes/sword_action_button.tscn" id="7_a70gl"]
+[ext_resource type="PackedScene" uid="uid://6yguuou8m0oy" path="res://Scenes/heal_action_button.tscn" id="8_ebcl4"]
+[ext_resource type="PackedScene" uid="uid://dgcrqwl65oxtb" path="res://Scenes/fireball_action_button.tscn" id="9_mlrwj"]
+
+[node name="Battle" type="Node"]
+script = ExtResource("1_amr2d")
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("2_aivef")
+damage = null
+fireball_damage = null
+
+[node name="Dungeon" type="Sprite2D" parent="."]
+position = Vector2(45, 80)
+texture = ExtResource("1_ishl0")
+
+[node name="MobileRpgMockup" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(45, 80)
+texture = ExtResource("1_ikiff")
+metadata/_edit_lock_ = true
+
+[node name="Enemy" parent="." instance=ExtResource("4_golvm")]
+position = Vector2(45, 33)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="StatsPanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 50.0
+offset_right = 87.0
+offset_bottom = 70.0
+script = ExtResource("6_i8yhs")
+
+[node name="StatsContainer" type="HBoxContainer" parent="UI/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "HP
+25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "AP
+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "MP
+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextboxPanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 137.0
+offset_right = 92.0
+offset_bottom = 160.0
+
+[node name="BattleActionButtons" type="GridContainer" parent="UI"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 72.0
+offset_right = 81.0
+offset_bottom = 136.0
+theme_override_constants/h_separation = 8
+columns = 2
+
+[node name="SwordActionButton" parent="UI/BattleActionButtons" instance=ExtResource("7_a70gl")]
+layout_mode = 2
+
+[node name="HealActionButton" parent="UI/BattleActionButtons" instance=ExtResource("8_ebcl4")]
+layout_mode = 2
+
+[node name="FireballActionButton" parent="UI/BattleActionButtons" instance=ExtResource("9_mlrwj")]
+layout_mode = 2
+
+[connection signal="ap_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_ap_changed"]
+[connection signal="hp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_hp_changed"]
+[connection signal="mp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_mp_changed"]
+[connection signal="died" from="Enemy" to="." method="_on_enemy_died"]

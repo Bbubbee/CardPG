@@ -4,11 +4,10 @@ const SLASH = preload("res://Scenes/slash.tscn")
 
 
 func _on_pressed(): 
-	var main = get_tree().current_scene  # Battle. 
-	var enemy = main.find_child("Enemy") 
-	var player = main.find_child("PlayerStats") 
+	var enemy = battle_units.player
+	var player = battle_units.player 
 	
-	if enemy != null and player != null: 
+	if enemy and player: 
 		CreateSlash(enemy.global_position) 
 		player.mp += 2
 		player.ap -= 1  
