@@ -14,6 +14,9 @@ var ap = max_ap:
 var max_mp = 10
 var mp = max_mp:
 	set = SetMp
+@export var damage = 4
+@export var fireball_damage = 7
+
 
 func SetHp(new_hp):
 	hp = clamp(new_hp, 0, max_hp) 
@@ -28,6 +31,7 @@ func SetAp(new_ap):
 func SetMp(new_mp):
 	mp = clamp(new_mp, 0, max_mp) 
 	emit_signal("mp_changed", mp)
+
 
 
 

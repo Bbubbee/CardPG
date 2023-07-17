@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgcrqwl65oxtb"]
+
+[ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_v7655"]
+[ext_resource type="Script" path="res://Scripts/Action Buttons/fireball_action_button.gd" id="2_g10ud"]
+
+[node name="FireballActionButton" instance=ExtResource("1_v7655")]
+theme_override_font_sizes/font_size = 5
+text = "FIREBALL"
+icon_alignment = 1
+script = ExtResource("2_g10ud")

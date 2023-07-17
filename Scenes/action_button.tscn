@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmn8h6bulwl3c"]
+
+[ext_resource type="Script" path="res://Scripts/Action Buttons/action_button.gd" id="1_msjol"]
+
+[node name="ActionButton" type="Button"]
+custom_minimum_size = Vector2(32, 13)
+offset_right = 32.0
+offset_bottom = 13.0
+script = ExtResource("1_msjol")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://cg1j4jne6b5e6"]
+
+[ext_resource type="Texture2D" uid="uid://6nurnw7wsepf" path="res://Assets/Animations/Fireball/fireballAnimation1.png" id="1_g5vvd"]
+[ext_resource type="Script" path="res://Scripts/fireball.gd" id="1_gdxba"]
+[ext_resource type="Texture2D" uid="uid://b53p22pfpvi1m" path="res://Assets/Animations/Fireball/fireballAnimation2.png" id="2_sw8pb"]
+[ext_resource type="Texture2D" uid="uid://d4ln237d2fuh1" path="res://Assets/Animations/Fireball/fireballAnimation3.png" id="3_s138b"]
+[ext_resource type="Texture2D" uid="uid://dr3pli3onfyot" path="res://Assets/Animations/Fireball/fireballAnimation4.png" id="4_2jfy1"]
+[ext_resource type="Texture2D" uid="uid://dc8bh86ckjnl3" path="res://Assets/Animations/Fireball/fireballAnimation5.png" id="5_spa71"]
+[ext_resource type="Texture2D" uid="uid://ba71kp6m8u5xa" path="res://Assets/Animations/Fireball/fireballAnimation6.png" id="6_vydpx"]
+[ext_resource type="Texture2D" uid="uid://c7p17e3atqutp" path="res://Assets/Animations/Fireball/fireballAnimation7.png" id="7_gjwpn"]
+[ext_resource type="Texture2D" uid="uid://biyakg1hofal7" path="res://Assets/Animations/Fireball/fireballAnimation8.png" id="8_hjbtr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n1oyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g5vvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sw8pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_s138b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2jfy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_spa71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vydpx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gjwpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hjbtr")
+}],
+"loop": false,
+"name": &"Fireball",
+"speed": 5.0
+}]
+
+[node name="Fireball" type="Node2D"]
+script = ExtResource("1_gdxba")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_n1oyi")
+animation = &"Fireball"
+autoplay = "Fireball"
+frame = 2
+frame_progress = 0.502335
+speed_scale = 1.5
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

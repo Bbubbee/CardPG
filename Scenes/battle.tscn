@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy2ytcema5j74"]
+[gd_scene load_steps=10 format=3 uid="uid://cy2ytcema5j74"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
 [ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="2_aivef"]
 [ext_resource type="PackedScene" uid="uid://dim4havfaaoc0" path="res://Scenes/enemy.tscn" id="4_golvm"]
 [ext_resource type="Script" path="res://Scripts/StatsPanel.gd" id="6_i8yhs"]
+[ext_resource type="PackedScene" uid="uid://dmg7yj2mknkn4" path="res://Scenes/sword_action_button.tscn" id="7_a70gl"]
+[ext_resource type="PackedScene" uid="uid://6yguuou8m0oy" path="res://Scenes/heal_action_button.tscn" id="8_ebcl4"]
+[ext_resource type="PackedScene" uid="uid://dgcrqwl65oxtb" path="res://Scenes/fireball_action_button.tscn" id="9_mlrwj"]
 
 [node name="Battle" type="Node"]
 script = ExtResource("1_amr2d")
@@ -95,63 +98,16 @@ offset_bottom = 136.0
 theme_override_constants/h_separation = 8
 columns = 2
 
-[node name="SwordButton" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
+[node name="SwordActionButton" parent="UI/BattleActionButtons" instance=ExtResource("7_a70gl")]
 layout_mode = 2
-text = "Sword
-"
 
-[node name="SwordButton2" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
+[node name="HealActionButton" parent="UI/BattleActionButtons" instance=ExtResource("8_ebcl4")]
 layout_mode = 2
-text = "
-"
 
-[node name="SwordButton3" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
+[node name="FireballActionButton" parent="UI/BattleActionButtons" instance=ExtResource("9_mlrwj")]
 layout_mode = 2
-text = "
-"
-
-[node name="SwordButton4" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
-layout_mode = 2
-text = "
-"
-
-[node name="SwordButton5" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
-layout_mode = 2
-text = "
-"
-
-[node name="SwordButton6" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
-layout_mode = 2
-text = "
-"
-
-[node name="SwordButton7" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
-layout_mode = 2
-text = "
-"
-
-[node name="SwordButton8" type="Button" parent="UI/BattleActionButtons"]
-custom_minimum_size = Vector2(32, 13)
-layout_mode = 2
-text = "
-"
 
 [connection signal="ap_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_ap_changed"]
 [connection signal="hp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_hp_changed"]
 [connection signal="mp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_mp_changed"]
 [connection signal="died" from="Enemy" to="." method="_on_enemy_died"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton" to="." method="_on_sword_button_pressed"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton2" to="." method="_on_sword_button_pressed"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton3" to="." method="_on_sword_button_pressed"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton4" to="." method="_on_sword_button_pressed"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton5" to="." method="_on_sword_button_pressed"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton6" to="." method="_on_sword_button_pressed"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton7" to="." method="_on_sword_button_pressed"]
-[connection signal="pressed" from="UI/BattleActionButtons/SwordButton8" to="." method="_on_sword_button_pressed"]

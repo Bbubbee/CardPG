@@ -7,12 +7,12 @@ signal end_turn
 @onready var animation_player = $AnimationPlayer
 
 var attack_damage = 3
-var hp = 25: 
+var max_hp = 25
+var hp = max_hp: 
 	set(new_hp):
-		hp = new_hp
+		hp = clamp(new_hp, 0, max_hp)
 		hp_label.text = str(hp) + "hp"
-var target = null
-	# Temp solution: needed for DealDamage().
+var target = null  # Temp implementation: needed for DealDamage().
 
 
 func Attack(target) -> void:
@@ -29,12 +29,17 @@ func TakeDamage(amount):
 	self.hp -= amount 
 	
 	if IsDead():
-		emit_signal("died") 
-		queue_free()
+		Dies()
 
 func DealDamage(): 
 	print("deal damage") 
 	target.hp -= attack_damage
+	
+func Dies(): 
+	animation_player.play("Fades")
+	await animation_player.animation_finished
+	emit_signal("died") 
+	queue_free()
 	
 func IsDead():
 	return hp <= 0  # If dead return true.

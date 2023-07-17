@@ -21,11 +21,8 @@ func StartEnemyTurn():
 		await enemy.end_turn  
 	StartPlayerTurn()
 
-func _on_sword_button_pressed():
-	if enemy != null:
-		player.ap -= 1
-		enemy.TakeDamage(4) 
-		
 func _on_enemy_died():
 	player_battle_action_buttons.hide()
+	player.emit_signal("end_turn") 
 	enemy = null 
+
