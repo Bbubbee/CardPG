@@ -1,22 +1,23 @@
 extends Node2D
 
+var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
+
 signal died 
 signal end_turn
 
+@export var attack_damage: int = 4
+@export var max_hp: int = 35 
+
 @onready var hp_label = $Label
 @onready var animation_player = $AnimationPlayer
-
-var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
-
-var attack_damage = 3
-var max_hp = 25
-var hp = max_hp: 
+@onready var hp = max_hp: 
 	set(new_hp):
 		hp = clamp(new_hp, 0, max_hp)
 		hp_label.text = str(hp) + "hp"
-var target = null  # Temp implementation: needed for DealDamage().
+
 
 func _ready():
+	hp_label.text = str(hp)+"hp"
 	battle_units.enemy = self
 
 func _exit_tree():

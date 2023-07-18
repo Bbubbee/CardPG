@@ -10,7 +10,7 @@ func _on_pressed():
 	if enemy and player: 
 		if player.mp >= 8: 
 			CreateFireball(enemy.global_position)
-			enemy.TakeDamage(9)
+			enemy.TakeDamage(player.fireball_damage)
 			player.mp -= 8
 			player.ap -= 1
 	

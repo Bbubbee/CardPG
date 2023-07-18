@@ -17,7 +17,7 @@ var max_mp = 10
 var mp = max_mp:
 	set = SetMp
 @export var damage = 4
-@export var fireball_damage = 7
+@export var fireball_damage = 8
 
 func _ready():
 	battle_units.player = self
