@@ -3,3 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dim4havfaaoc0" path="res://Scenes/enemy.tscn" id="1_3e04c"]
 
 [node name="Rat" instance=ExtResource("1_3e04c")]
+max_hp = 25
+
+[node name="HoverInfo" parent="." index="3"]
+custom_minimum_size = Vector2(47.11, 27.905)
+description = "A swaggy rat.
+"

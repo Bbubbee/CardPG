@@ -8,10 +8,18 @@ func _on_pressed():
 	var player = battle_units.player 
 	
 	if enemy and player: 
-		CreateSlash(enemy.global_position) 
-		player.mp += 2
-		player.ap -= 1  
-		enemy.TakeDamage(player.damage)
+		if pressable: 
+			CreateSlash(enemy.global_position) 
+			enemy.TakeDamage(player.damage)
+			player.mp += 2
+			player.ap -= 1  
+		
+			# Start action button cool down.
+			pressable = false
+			$Cooldown.start()
+		
+		
+		
 		
 
 func CreateSlash(pos): 
@@ -19,4 +27,4 @@ func CreateSlash(pos):
 	var main = get_tree().current_scene
 	main.add_child(slash) 
 	slash.global_position = pos
-	
+

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmn8h6bulwl3c"]
+[gd_scene load_steps=3 format=3 uid="uid://cmn8h6bulwl3c"]
 
 [ext_resource type="Script" path="res://Scripts/Action Buttons/action_button.gd" id="1_msjol"]
+[ext_resource type="PackedScene" uid="uid://c8emammtcxswt" path="res://Scenes/hover_info.tscn" id="2_gd11o"]
 
 [node name="ActionButton" type="Button"]
 custom_minimum_size = Vector2(32, 13)
@@ -8,4 +9,12 @@ offset_right = 32.0
 offset_bottom = 13.0
 script = ExtResource("1_msjol")
 
+[node name="HoverInfo" parent="." instance=ExtResource("2_gd11o")]
+layout_mode = 1
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

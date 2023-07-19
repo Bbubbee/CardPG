@@ -22,12 +22,27 @@ func _ready():
 
 func _exit_tree():
 	battle_units.enemy = null
-
-func Attack() -> void:
+	
+func StartTurn(): 
 	await get_tree().create_timer(0.4).timeout 
+	
+	# NOTE: Used to check if dead here. 
+	# Redundant because death check happens when enemy takes damage. 
+	# Recode if there is means of enemy dying DURING their turn. 
+	if not IsDead():
+		Attack()
+	
+		
+func Attack() -> void:
+	print("enemy - attack")
 	animation_player.play("Attack")  # Calls DealDamage().
 	await animation_player.animation_finished  
 	emit_signal("end_turn")
+	
+	
+func DealDamage(): 
+	battle_units.player.hp -= attack_damage
+
 
 func TakeDamage(amount): 
 	animation_player.play("Shake")
@@ -37,14 +52,17 @@ func TakeDamage(amount):
 	if IsDead():
 		Dies()
 
-func DealDamage(): 
-	battle_units.player.hp -= attack_damage
 	
 func Dies(): 
+	# TEMP: Removes enemy from battle_units early so that the player can not
+	# attack it once it's in the process of dying. 
+	battle_units.enemy = null
+	
 	animation_player.play("Fades")
 	await animation_player.animation_finished
-	emit_signal("died") 
 	queue_free()
+	emit_signal("end_turn") 
+	emit_signal("died") 
 	
 func IsDead():
 	return hp <= 0  # If dead return true.

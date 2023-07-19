@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cy2ytcema5j74"]
+[gd_scene load_steps=15 format=3 uid="uid://cy2ytcema5j74"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
 [ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dmg7yj2mknkn4" path="res://Scenes/sword_action_button.tscn" id="7_a70gl"]
 [ext_resource type="PackedScene" uid="uid://6yguuou8m0oy" path="res://Scenes/heal_action_button.tscn" id="8_ebcl4"]
 [ext_resource type="PackedScene" uid="uid://dgcrqwl65oxtb" path="res://Scenes/fireball_action_button.tscn" id="9_mlrwj"]
+[ext_resource type="PackedScene" uid="uid://c3ss3efuriudo" path="res://Scenes/meditate_button.tscn" id="11_6ye2t"]
 
 [sub_resource type="Animation" id="Animation_qty82"]
 resource_name = "FadeToNewRoom"
@@ -79,12 +80,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 layout_mode = 0
 offset_right = 90.0
 offset_bottom = 50.0
+mouse_filter = 2
 
 [node name="NextRoomButton" type="Button" parent="UI/CenterContainer"]
 custom_minimum_size = Vector2(70, 13)
@@ -141,6 +144,20 @@ offset_top = 137.0
 offset_right = 92.0
 offset_bottom = 160.0
 
+[node name="Textbox" type="RichTextLabel" parent="UI/TextboxPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 3
+scroll_active = false
+
 [node name="BattleActionButtons" type="GridContainer" parent="UI"]
 layout_mode = 0
 offset_left = 9.0
@@ -159,6 +176,9 @@ layout_mode = 2
 [node name="FireballActionButton" parent="UI/BattleActionButtons" instance=ExtResource("9_mlrwj")]
 layout_mode = 2
 
+[node name="MeditateButton" parent="UI/BattleActionButtons" instance=ExtResource("11_6ye2t")]
+layout_mode = 2
+
 [node name="Fade" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -168,6 +188,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

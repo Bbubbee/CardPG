@@ -16,7 +16,7 @@ var ap = max_ap:
 var max_mp = 10
 var mp = max_mp:
 	set = SetMp
-@export var damage = 4
+@export var damage = 15
 @export var fireball_damage = 8
 
 func _ready():
