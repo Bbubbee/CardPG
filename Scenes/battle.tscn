@@ -64,8 +64,6 @@ texture = ExtResource("1_ishl0")
 [node name="EnemyPosition" type="Marker2D" parent="."]
 position = Vector2(48, 32)
 
-[node name="Slime" parent="EnemyPosition" instance=ExtResource("5_nr7ws")]
-
 [node name="MobileRpgMockup" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.12549)
@@ -81,7 +79,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 layout_mode = 0

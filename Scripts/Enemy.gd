@@ -26,7 +26,7 @@ func _exit_tree():
 func StartTurn(): 
 	await get_tree().create_timer(0.4).timeout 
 	
-	# NOTE: Used to check if dead here. 
+	# NOTE: Used to check if is dead here. 
 	# Redundant because death check happens when enemy takes damage. 
 	# Recode if there is means of enemy dying DURING their turn. 
 	if not IsDead():
@@ -60,9 +60,9 @@ func Dies():
 	
 	animation_player.play("Fades")
 	await animation_player.animation_finished
-	queue_free()
 	emit_signal("end_turn") 
 	emit_signal("died") 
+	queue_free()
 	
 func IsDead():
 	return hp <= 0  # If dead return true.

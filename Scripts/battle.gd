@@ -11,10 +11,8 @@ extends Node
 var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
 func _ready():
+	CreateNewEnemy()
 	StartPlayerTurn()
-	var enemy = battle_units.enemy
-	if enemy: 
-		enemy.died.connect(_on_enemy_died)
 		
 
 func StartPlayerTurn(): 
@@ -37,16 +35,21 @@ func StartEnemyTurn():
 
 
 func _on_next_room_button_pressed():
-	next_room_button.hide() 
-	animation_player.play("FadeToNewRoom")
-	await animation_player.animation_finished	
-	player_battle_action_buttons.show()
+	battle_units.player.test = true
+	print(battle_units.player.test)
+	SceneTransition.ChangeScene("res://Scenes/battle.tscn")
 	
-	battle_units.player.ap = battle_units.player.max_ap
-	battle_units.player.mp = battle_units.player.max_mp
-	
-	StartPlayerTurn()
-	CreateNewEnemy()
+	# Old implementation: 	
+#	next_room_button.hide() 
+#	animation_player.play("FadeToNewRoom")
+#	await animation_player.animation_finished	
+#	player_battle_action_buttons.show()
+#
+#	battle_units.player.ap = battle_units.player.max_ap
+#	battle_units.player.mp = battle_units.player.max_mp
+#
+#	StartPlayerTurn()
+#	CreateNewEnemy()
 	
 func _on_enemy_died(): 
 	next_room_button.show()
@@ -58,5 +61,4 @@ func CreateNewEnemy():
 	battle_units.enemy = enemy
 	enemy_position.add_child(enemy)
 	enemy.died.connect(_on_enemy_died)
-	
 	
