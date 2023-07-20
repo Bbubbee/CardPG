@@ -7,8 +7,6 @@ signal hp_changed(val)
 signal ap_changed(val)
 signal mp_changed(val)  
 
-var test = false
-
 var max_hp = 25
 var hp = max_hp: 
 	set = SetHp
@@ -20,15 +18,6 @@ var mp = max_mp:
 	set = SetMp
 @export var damage = 15
 @export var fireball_damage = 8
-
-func _ready():
-	print(test) 
-	battle_units.player = self
-
-# REMINDER: Removed this so that player isn't removed when scenes change.
-# I reset the main scene whenever a player goes to another room. 
-#func _exit_tree():
-#	battle_units.player = null
 
 
 func SetHp(new_hp):

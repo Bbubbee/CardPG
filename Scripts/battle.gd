@@ -14,14 +14,12 @@ func _ready():
 	CreateNewEnemy()
 	StartPlayerTurn()
 		
-
 func StartPlayerTurn(): 
 	next_room_button.hide() 
 	player_battle_action_buttons.show()
 	
-	var player = battle_units.player
-	player.ap = player.max_ap
-	await player.end_turn
+	PlayerStats.ap = PlayerStats.max_ap
+	await PlayerStats.end_turn
 	StartEnemyTurn()
 
 func StartEnemyTurn():
@@ -35,21 +33,8 @@ func StartEnemyTurn():
 
 
 func _on_next_room_button_pressed():
-	battle_units.player.test = true
-	print(battle_units.player.test)
 	SceneTransition.ChangeScene("res://Scenes/battle.tscn")
 	
-	# Old implementation: 	
-#	next_room_button.hide() 
-#	animation_player.play("FadeToNewRoom")
-#	await animation_player.animation_finished	
-#	player_battle_action_buttons.show()
-#
-#	battle_units.player.ap = battle_units.player.max_ap
-#	battle_units.player.mp = battle_units.player.max_mp
-#
-#	StartPlayerTurn()
-#	CreateNewEnemy()
 	
 func _on_enemy_died(): 
 	next_room_button.show()

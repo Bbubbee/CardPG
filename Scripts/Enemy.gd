@@ -34,14 +34,13 @@ func StartTurn():
 	
 		
 func Attack() -> void:
-	print("enemy - attack")
 	animation_player.play("Attack")  # Calls DealDamage().
 	await animation_player.animation_finished  
 	emit_signal("end_turn")
 	
 	
 func DealDamage(): 
-	battle_units.player.hp -= attack_damage
+	PlayerStats.hp -= attack_damage
 
 
 func TakeDamage(amount): 

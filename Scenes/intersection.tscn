@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://djb0xfvsx68s7"]
+
+[ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_5qqwn"]
+
+[node name="Intersection" type="Node"]
+
+[node name="Dungeon" type="Sprite2D" parent="."]
+position = Vector2(45, 80)
+texture = ExtResource("1_5qqwn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InformationPanel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = -3.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InformationText" type="RichTextLabel" parent="Control/InformationPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 2
+text = "You see a figure in the shadows 
+
+Do you confront it (A) or sneak around (B)? "
+
+[node name="ButtonChoicesContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -49.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ChoiceButton1" type="Button" parent="Control/ButtonChoicesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="ChoiceButton2" type="Button" parent="Control/ButtonChoicesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "B"

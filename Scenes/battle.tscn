@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cy2ytcema5j74"]
+[gd_scene load_steps=14 format=3 uid="uid://cy2ytcema5j74"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
 [ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_ishl0"]
 [ext_resource type="PackedScene" uid="uid://brlapv87vsvdr" path="res://Scenes/rat.tscn" id="2_6p6l0"]
-[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="2_aivef"]
 [ext_resource type="PackedScene" uid="uid://dbosj7fd2lipf" path="res://Scenes/slime.tscn" id="5_nr7ws"]
 [ext_resource type="Script" path="res://Scripts/StatsPanel.gd" id="6_i8yhs"]
 [ext_resource type="PackedScene" uid="uid://dmg7yj2mknkn4" path="res://Scenes/sword_action_button.tscn" id="7_a70gl"]
@@ -53,9 +52,6 @@ _data = {
 [node name="Battle" type="Node"]
 script = ExtResource("1_amr2d")
 enemies = Array[PackedScene]([ExtResource("2_6p6l0"), ExtResource("5_nr7ws")])
-
-[node name="PlayerStats" type="Node" parent="."]
-script = ExtResource("2_aivef")
 
 [node name="Dungeon" type="Sprite2D" parent="."]
 position = Vector2(45, 80)
@@ -192,7 +188,4 @@ libraries = {
 "": SubResource("AnimationLibrary_a5x0j")
 }
 
-[connection signal="ap_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_ap_changed"]
-[connection signal="hp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_hp_changed"]
-[connection signal="mp_changed" from="PlayerStats" to="UI/StatsPanel" method="_on_player_stats_mp_changed"]
 [connection signal="pressed" from="UI/CenterContainer/NextRoomButton" to="." method="_on_next_room_button_pressed"]

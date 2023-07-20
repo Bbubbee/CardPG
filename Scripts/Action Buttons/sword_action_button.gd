@@ -5,7 +5,7 @@ const SLASH = preload("res://Scenes/slash.tscn")
 
 func _on_pressed(): 
 	var enemy = battle_units.enemy
-	var player = battle_units.player 
+	var player = PlayerStats
 	
 	if enemy and player: 
 		if pressable: 
