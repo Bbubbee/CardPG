@@ -8,11 +8,15 @@ extends Node
 @export var enemies : Array[PackedScene] 
 
 
+
+
 var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
 func _ready():
 	CreateNewEnemy()
+	CreateActionButtons()
 	StartPlayerTurn()
+	
 		
 func StartPlayerTurn(): 
 	next_room_button.hide() 
@@ -46,4 +50,13 @@ func CreateNewEnemy():
 	battle_units.enemy = enemy
 	enemy_position.add_child(enemy)
 	enemy.died.connect(_on_enemy_died)
+
+func CreateActionButtons(): 
+	for action_button in PlayerStats.action_buttons: 
+		player_battle_action_buttons.add_child(action_button)
+	
+	
+	
+	
+
 	

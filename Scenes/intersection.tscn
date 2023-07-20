@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://djb0xfvsx68s7"]
+[gd_scene load_steps=3 format=3 uid="uid://djb0xfvsx68s7"]
 
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_5qqwn"]
+[ext_resource type="Script" path="res://Scripts/intersection.gd" id="1_ul8so"]
 
 [node name="Intersection" type="Node"]
+script = ExtResource("1_ul8so")
 
 [node name="Dungeon" type="Sprite2D" parent="."]
 position = Vector2(45, 80)
@@ -57,12 +59,15 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ChoiceButton1" type="Button" parent="Control/ButtonChoicesContainer"]
+[node name="ChoiceButtonA" type="Button" parent="Control/ButtonChoicesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "A"
 
-[node name="ChoiceButton2" type="Button" parent="Control/ButtonChoicesContainer"]
+[node name="ChoiceButtonB" type="Button" parent="Control/ButtonChoicesContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "B"
+
+[connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonA" to="." method="_on_choice_button_a_pressed"]
+[connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonB" to="." method="_on_choice_button_b_pressed"]
