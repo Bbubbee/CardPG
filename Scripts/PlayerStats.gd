@@ -18,6 +18,9 @@ var mp = max_mp:
 	set = SetMp
 @export var damage = 15
 @export var fireball_damage = 8
+var action_buttons : Array[Button] 
+
+var SWORD = load("res://Scenes/sword_action_button.tscn")
 
 
 func SetHp(new_hp):
@@ -34,6 +37,11 @@ func SetMp(new_mp):
 	mp = clamp(new_mp, 0, max_mp) 
 	emit_signal("mp_changed", mp)
 
+
+func _ready():
+	action_buttons.append(load("res://Scenes/sword_action_button.tscn").instantiate()) 
+	action_buttons.append(load("res://Scenes/heal_action_button.tscn").instantiate()) 
+	
 
 
 
