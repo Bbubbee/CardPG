@@ -8,14 +8,14 @@ extends Node
 @export var enemies : Array[PackedScene] 
 
 
-
-
 var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
 func _ready():
 	CreateNewEnemy()
-	CreateActionButtons()
 	StartPlayerTurn()
+
+func _exit_tree():
+	PlayerStats.intersection += 1
 	
 		
 func StartPlayerTurn(): 
@@ -37,7 +37,29 @@ func StartEnemyTurn():
 
 
 func _on_next_room_button_pressed():
-	SceneTransition.ChangeScene("res://Scenes/battle.tscn")
+	next_room_button.disabled = true 
+	print(PlayerStats.intersection)
+	
+	match PlayerStats.intersection: 
+		3:
+			SceneTransition.ChangeScene("res://Scenes/Intersections/first_intersection.tscn")
+		6: 
+			SceneTransition.ChangeScene("res://Scenes/level_2.tscn")
+			# Goes to second intersection after. 
+		9:
+			SceneTransition.ChangeScene("res://Scenes/Intersections/third_intersection.tscn")
+		12:
+			SceneTransition.ChangeScene("res://Scenes/level_3.tscn")	
+			# Goes to fourth intersection after. 
+		15:
+			SceneTransition.ChangeScene("res://Scenes/Intersections/fifth_intersection.tscn")
+		18:
+			SceneTransition.ChangeScene("res://Scenes/Intersections/sixth_intersection.tscn")
+			# Show boss message after. Heal and restore mana.
+		_: 
+			SceneTransition.ChangeScene("res://Scenes/battle.tscn")
+		
+			
 	
 	
 func _on_enemy_died(): 
@@ -51,10 +73,7 @@ func CreateNewEnemy():
 	enemy_position.add_child(enemy)
 	enemy.died.connect(_on_enemy_died)
 
-func CreateActionButtons(): 
-	for action_button in PlayerStats.action_buttons: 
-		player_battle_action_buttons.add_child(action_button)
-	
+
 	
 	
 	

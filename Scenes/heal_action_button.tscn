@@ -9,4 +9,4 @@ script = ExtResource("2_ksgdq")
 
 [node name="HoverInfo" parent="." index="0"]
 description = "Heals 5 damage
-Costs 4 mp "
+Costs 6 mp "

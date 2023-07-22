@@ -42,9 +42,7 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 2
-text = "You see a figure in the shadows 
-
-Do you confront it (A) or sneak around (B)? "
+text = "This is the base intersection. Choose A or B. "
 
 [node name="ButtonChoicesContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
@@ -69,5 +67,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "B"
 
+[node name="NextButton" type="Button" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -38.0
+offset_right = 42.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+text = "NEXT"
+
 [connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonA" to="." method="_on_choice_button_a_pressed"]
 [connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonB" to="." method="_on_choice_button_b_pressed"]
+[connection signal="pressed" from="Control/NextButton" to="." method="_on_next_button_pressed"]

@@ -8,8 +8,10 @@ signal end_turn
 @export var attack_damage: int = 4
 @export var max_hp: int = 35 
 
-@onready var hp_label = $Label
+@onready var hp_label = $HealthLabel
+@onready var damage_taken_label = $DamageTakenLabel
 @onready var animation_player = $AnimationPlayer
+@onready var damage_taken_animation_player = $DamageTakenLabel/DamageTakenPlayer
 @onready var hp = max_hp: 
 	set(new_hp):
 		hp = clamp(new_hp, 0, max_hp)
@@ -17,6 +19,7 @@ signal end_turn
 
 
 func _ready():
+	damage_taken_label.hide()
 	hp_label.text = str(hp)+"hp"
 	battle_units.enemy = self
 
@@ -34,29 +37,29 @@ func StartTurn():
 	
 		
 func Attack() -> void:
+
 	animation_player.play("Attack")  # Calls DealDamage().
 	await animation_player.animation_finished  
 	emit_signal("end_turn")
 	
-	
 func DealDamage(): 
 	PlayerStats.hp -= attack_damage
-
 
 func TakeDamage(amount): 
 	animation_player.play("Shake")
 	await animation_player.animation_finished
 	self.hp -= amount 
+	ShowDamageTaken(amount)
 	
 	if IsDead():
 		Dies()
-
 	
 func Dies(): 
 	# TEMP: Removes enemy from battle_units early so that the player can not
 	# attack it once it's in the process of dying. 
 	battle_units.enemy = null
 	
+
 	animation_player.play("Fades")
 	await animation_player.animation_finished
 	emit_signal("end_turn") 
@@ -65,6 +68,12 @@ func Dies():
 	
 func IsDead():
 	return hp <= 0  # If dead return true.
+	
+func ShowDamageTaken(damage):
+	print("play animation")
+	damage_taken_label.text = "-"+str(damage)
+	damage_taken_label.show()
+	damage_taken_animation_player.play("DamageTaken")
 	
 
 	

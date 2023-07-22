@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cft6762n67okn"]
+
+[ext_resource type="PackedScene" uid="uid://djb0xfvsx68s7" path="res://Scenes/intersection.tscn" id="1_iw2vs"]
+
+[node name="SixthIntersection" instance=ExtResource("1_iw2vs")]
+
+[node name="InformationText" parent="Control/InformationPanel" index="0"]
+text = "This is the sixth intersection"

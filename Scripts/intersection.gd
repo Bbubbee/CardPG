@@ -1,12 +1,14 @@
 extends Node
 
-
-
-# Each button press affects PlayerStats.gd 
+@onready var information_text = $Control/InformationPanel/InformationText
 
 func _on_choice_button_a_pressed():
-	pass
+	SceneTransition.ChangeScene("res://Scenes/battle.tscn")
 
 
 func _on_choice_button_b_pressed():
-	pass 
+	SceneTransition.ChangeScene("res://Scenes/battle.tscn")
+
+
+func _on_next_button_pressed():
+	SceneTransition.ChangeScene("res://Scenes/battle.tscn") 

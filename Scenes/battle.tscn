@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cy2ytcema5j74"]
+[gd_scene load_steps=11 format=3 uid="uid://cy2ytcema5j74"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
 [ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://brlapv87vsvdr" path="res://Scenes/rat.tscn" id="2_6p6l0"]
 [ext_resource type="PackedScene" uid="uid://dbosj7fd2lipf" path="res://Scenes/slime.tscn" id="5_nr7ws"]
 [ext_resource type="Script" path="res://Scripts/StatsPanel.gd" id="6_i8yhs"]
+[ext_resource type="Script" path="res://Scripts/BattleActionButtons.gd" id="7_h6moi"]
 
 [sub_resource type="Animation" id="Animation_qty82"]
 resource_name = "FadeToNewRoom"
@@ -155,6 +156,7 @@ offset_right = 81.0
 offset_bottom = 136.0
 theme_override_constants/h_separation = 8
 columns = 2
+script = ExtResource("7_h6moi")
 
 [node name="Fade" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

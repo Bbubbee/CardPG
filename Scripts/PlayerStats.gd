@@ -16,11 +16,12 @@ var ap = max_ap:
 var max_mp = 10
 var mp = max_mp:
 	set = SetMp
-@export var damage = 15
-@export var fireball_damage = 8
-var action_buttons : Array[Button] 
+var damage = 6
+var fireball_damage = 9
+var action_buttons : Array[PackedScene] 
 
-var SWORD = load("res://Scenes/sword_action_button.tscn")
+# Keeps track of what intersection the player is at
+var intersection = 1
 
 
 func SetHp(new_hp):
@@ -39,8 +40,9 @@ func SetMp(new_mp):
 
 
 func _ready():
-	action_buttons.append(load("res://Scenes/sword_action_button.tscn").instantiate()) 
-	action_buttons.append(load("res://Scenes/heal_action_button.tscn").instantiate()) 
+	action_buttons.append(load("res://Scenes/sword_action_button.tscn")) 
+	action_buttons.append(load("res://Scenes/heal_action_button.tscn")) 
+	action_buttons.append(load("res://Scenes/meditate_button.tscn")) 
 	
 
 
