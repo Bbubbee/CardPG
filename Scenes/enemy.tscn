@@ -1,40 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dim4havfaaoc0"]
+[gd_scene load_steps=10 format=3 uid="uid://dim4havfaaoc0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_qwbgn"]
 [ext_resource type="Texture2D" uid="uid://ypc0hl0s73cm" path="res://Assets/Images/Rat.png" id="2_y78ws"]
 [ext_resource type="PackedScene" uid="uid://c8emammtcxswt" path="res://Scenes/hover_info.tscn" id="3_ux1kq"]
-
-[sub_resource type="Animation" id="Animation_6wed3"]
-resource_name = "DamageTaken"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(2, -27), Vector2(3, -28), Vector2(4, -26), Vector2(2, -27), Vector2(1, -25), Vector2(2, -26), Vector2(3, -24), Vector2(2, -26)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vvqox"]
-_data = {
-"DamageTaken": SubResource("Animation_6wed3")
-}
 
 [sub_resource type="Animation" id="Animation_o417c"]
 resource_name = "Attack"
@@ -82,6 +50,11 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ei6ol"]
+resource_name = "HealthLowered"
+length = 0.75
+step = 0.05
+
 [sub_resource type="Animation" id="Animation_edudm"]
 length = 0.001
 tracks/0/type = "value"
@@ -126,11 +99,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(-2, 2), Vector2(-2, -2), Vector2(2, 2), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ei6ol"]
-resource_name = "HealthLowered"
-length = 0.75
-step = 0.05
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qcbya"]
 _data = {
 "Attack": SubResource("Animation_o417c"),
@@ -155,23 +123,6 @@ text = "25hp
 "
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="DamageTakenLabel" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_left = 2.0
-offset_top = -26.0
-offset_right = 24.0
-offset_bottom = -17.0
-theme_override_font_sizes/font_size = 5
-text = "-4
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DamageTakenPlayer" type="AnimationPlayer" parent="DamageTakenLabel"]
-libraries = {
-"": SubResource("AnimationLibrary_vvqox")
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -58,10 +58,7 @@ func _on_next_room_button_pressed():
 			# Show boss message after. Heal and restore mana.
 		_: 
 			SceneTransition.ChangeScene("res://Scenes/battle.tscn")
-		
-			
-	
-	
+
 func _on_enemy_died(): 
 	next_room_button.show()
 	player_battle_action_buttons.hide() 

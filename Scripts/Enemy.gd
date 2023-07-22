@@ -8,10 +8,9 @@ signal end_turn
 @export var attack_damage: int = 4
 @export var max_hp: int = 35 
 
+@onready var damage_taken_label = preload("res://Scenes/damage_taken_label.tscn")
 @onready var hp_label = $HealthLabel
-@onready var damage_taken_label = $DamageTakenLabel
 @onready var animation_player = $AnimationPlayer
-@onready var damage_taken_animation_player = $DamageTakenLabel/DamageTakenPlayer
 @onready var hp = max_hp: 
 	set(new_hp):
 		hp = clamp(new_hp, 0, max_hp)
@@ -19,7 +18,6 @@ signal end_turn
 
 
 func _ready():
-	damage_taken_label.hide()
 	hp_label.text = str(hp)+"hp"
 	battle_units.enemy = self
 
@@ -44,6 +42,7 @@ func Attack() -> void:
 	
 func DealDamage(): 
 	PlayerStats.hp -= attack_damage
+	ShowDamageTakenPlayer(attack_damage)
 
 func TakeDamage(amount): 
 	animation_player.play("Shake")
@@ -70,10 +69,17 @@ func IsDead():
 	return hp <= 0  # If dead return true.
 	
 func ShowDamageTaken(damage):
-	print("play animation")
-	damage_taken_label.text = "-"+str(damage)
-	damage_taken_label.show()
-	damage_taken_animation_player.play("DamageTaken")
+	var damage_label = damage_taken_label.instantiate()
+	hp_label.add_child(damage_label)
+	damage_label.ShowDamageTaken(damage)
+
+func ShowDamageTakenPlayer(damage): 
+#	var damage_label = damage_taken_label.instantiate()
+#	var main = get_tree().current_scene
+#	main.add_child(damage_label)
+#	damage_label.ShowDamageTaken(damage) 
+	pass
+
 	
 
 	

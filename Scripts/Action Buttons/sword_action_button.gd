@@ -18,13 +18,10 @@ func _on_pressed():
 			pressable = false
 			$Cooldown.start()
 		
-		
-		
-		
-
 func CreateSlash(pos): 
 	var slash = SLASH.instantiate() 
 	var main = get_tree().current_scene
 	main.add_child(slash) 
 	slash.global_position = pos
+#	slash.global_position.x = pos.x + 20
 
