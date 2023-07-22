@@ -6,6 +6,7 @@ const SLASH = preload("res://Scenes/slash.tscn")
 func _on_pressed(): 
 	var enemy = battle_units.enemy
 	var player = PlayerStats
+	var stats_container
 	
 	if enemy and player: 
 		if pressable: 
@@ -17,11 +18,11 @@ func _on_pressed():
 			# Start action button cool down.
 			pressable = false
 			$Cooldown.start()
+
 		
 func CreateSlash(pos): 
 	var slash = SLASH.instantiate() 
 	var main = get_tree().current_scene
 	main.add_child(slash) 
 	slash.global_position = pos
-#	slash.global_position.x = pos.x + 20
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://5sh2ilwddxjc"]
+
+[ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_8x22l"]
+[ext_resource type="Script" path="res://Scripts/Action Buttons/drain_action_button.gd" id="2_x7amq"]
+
+[node name="DrainActionButton" instance=ExtResource("1_8x22l")]
+text = "DRAIN"
+script = ExtResource("2_x7amq")
+
+[node name="HoverInfo" parent="." index="0"]
+description = "Costs 3 mp, Deals 3 damage
+Restores 3 hp"

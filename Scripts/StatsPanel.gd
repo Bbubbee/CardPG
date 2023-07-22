@@ -1,5 +1,8 @@
 extends Panel
 
+var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
+var stats_changed_label = preload("res://Scenes/damage_taken_label.tscn")
+
 @onready var hp_label = $StatsContainer/HP
 @onready var ap_label = $StatsContainer/AP
 @onready var mp_label = $StatsContainer/MP
@@ -16,12 +19,44 @@ func _ready():
 
 
 func _on_player_stats_ap_changed(val):
-	ap_label.text = "AP\n"+str(val) 
+	var change = int(ap_label.text) - val
+	change *= -1
+	
+	ap_label.text = "AP\n"+str(val)
+	
+	var x = stats_changed_label.instantiate()
+	ap_label.add_child(x)
+	if change > 0: 
+		x.ShowStatChanged("\n+"+str(change))
+	else:
+		x.ShowStatChanged("\n"+str(change))
+
+	
 
 
 func _on_player_stats_hp_changed(val):
-	hp_label.text = "HP\n"+str(val)  
+	var change = int(hp_label.text) - val
+	change *= -1
+	
+	hp_label.text = "AP\n"+str(val)
+	
+	var x = stats_changed_label.instantiate()
+	hp_label.add_child(x)
+	if change > 0: 
+		x.ShowStatIncreased("\n+"+str(change))
+	else:
+		x.ShowDamageTaken("\n"+str(change))
 
 
 func _on_player_stats_mp_changed(val):
-	mp_label.text = "MP\n"+str(val) 
+	var change = int(mp_label.text) - val
+	change *= -1
+	
+	mp_label.text = "AP\n"+str(val)
+	
+	var x = stats_changed_label.instantiate()
+	mp_label.add_child(x)
+	if change > 0: 
+		x.ShowStatChanged("\n+"+str(change))
+	else:
+		x.ShowStatChanged("\n"+str(change))

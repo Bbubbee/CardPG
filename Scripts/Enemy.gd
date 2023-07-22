@@ -42,7 +42,7 @@ func Attack() -> void:
 	
 func DealDamage(): 
 	PlayerStats.hp -= attack_damage
-	ShowDamageTakenPlayer(attack_damage)
+
 
 func TakeDamage(amount): 
 	animation_player.play("Shake")
@@ -71,16 +71,9 @@ func IsDead():
 func ShowDamageTaken(damage):
 	var damage_label = damage_taken_label.instantiate()
 	hp_label.add_child(damage_label)
-	damage_label.ShowDamageTaken(damage)
+	damage_label.ShowDamageTaken("-"+str(damage))
 
-func ShowDamageTakenPlayer(damage): 
-#	var damage_label = damage_taken_label.instantiate()
-#	var main = get_tree().current_scene
-#	main.add_child(damage_label)
-#	damage_label.ShowDamageTaken(damage) 
-	pass
 
-	
 
 	
 

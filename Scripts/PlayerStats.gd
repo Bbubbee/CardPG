@@ -25,17 +25,26 @@ var intersection = 1
 
 
 func SetHp(new_hp):
+	var old_hp = hp 
 	hp = clamp(new_hp, 0, max_hp) 
+	if old_hp == hp:
+		return
 	emit_signal("hp_changed", hp)
 	
 func SetAp(new_ap):
+	var old_ap = ap 
 	ap = clamp(new_ap, 0, max_ap) 
+	if old_ap == ap:
+		return
 	emit_signal("ap_changed", ap)
 	if ap == 0:
 		emit_signal("end_turn")
 
 func SetMp(new_mp):
+	var old_mp = mp 
 	mp = clamp(new_mp, 0, max_mp) 
+	if old_mp == mp:
+		return
 	emit_signal("mp_changed", mp)
 
 

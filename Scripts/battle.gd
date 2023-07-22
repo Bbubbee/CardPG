@@ -7,15 +7,20 @@ extends Node
 
 @export var enemies : Array[PackedScene] 
 
-
+var is_first_round = true
 var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
 func _ready():
+	print("is it first round?: "+str(is_first_round))
+	is_first_round = false
+	print("is it first round?: "+str(is_first_round))
+	battle_units.battle_scene = self
 	CreateNewEnemy()
 	StartPlayerTurn()
 
 func _exit_tree():
 	PlayerStats.intersection += 1
+	battle_units.battle_scene = null
 	
 		
 func StartPlayerTurn(): 
@@ -38,7 +43,6 @@ func StartEnemyTurn():
 
 func _on_next_room_button_pressed():
 	next_room_button.disabled = true 
-	print(PlayerStats.intersection)
 	
 	match PlayerStats.intersection: 
 		3:
@@ -61,6 +65,7 @@ func _on_next_room_button_pressed():
 
 func _on_enemy_died(): 
 	next_room_button.show()
+	PlayerStats.ap = PlayerStats.max_ap
 	player_battle_action_buttons.hide() 
 	
 func CreateNewEnemy(): 

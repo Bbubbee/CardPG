@@ -8,11 +8,10 @@ func _ready():
 
 
 func _on_choice_button_a_pressed():
-	information_text.text = "Runes are etched into the walls. As you pass a sensation of renewal courses through you. \n\nMax HP +5. HP restored."
+	information_text.text = "Runes are etched into the walls. As you pass a sensation of renewal courses through you. \n\nGained action: DRAIN. Mp restored."
 	$Control/ButtonChoicesContainer.hide()
 	$Control/NextButton.show()
-	PlayerStats.max_hp = PlayerStats.max_hp+5
-	PlayerStats.hp = PlayerStats.max_hp
+	PlayerStats.action_buttons.append(load("res://Scenes/drain_action_button.tscn")) 
 
 
 func _on_choice_button_b_pressed():
