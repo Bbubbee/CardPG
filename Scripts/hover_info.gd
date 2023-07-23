@@ -8,7 +8,6 @@ func _on_mouse_entered():
 	if textbox: 
 		textbox.text = description
 
-
 func _on_mouse_exited():
 	var main = get_tree().current_scene
 	var textbox = main.find_child("Textbox")

@@ -7,13 +7,16 @@ extends Node
 
 @export var enemies : Array[PackedScene] 
 
-var is_first_round = true
 var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
+enum {
+	LEVEL1,
+	LEVEL2,
+	LEVEL3
+}
+var current_level = LEVEL1
+
 func _ready():
-	print("is it first round?: "+str(is_first_round))
-	is_first_round = false
-	print("is it first round?: "+str(is_first_round))
 	battle_units.battle_scene = self
 	CreateNewEnemy()
 	StartPlayerTurn()

@@ -11,7 +11,7 @@ func _on_pressed():
 	if enemy and player: 
 		if pressable: 
 			CreateSlash(enemy.global_position) 
-			enemy.TakeDamage(player.damage)
+			enemy.TakeDamage(player.SLASH_DAMAGE)
 			player.mp += 2
 			player.ap -= 1  
 		
@@ -22,7 +22,9 @@ func _on_pressed():
 		
 func CreateSlash(pos): 
 	var slash = SLASH.instantiate() 
-	var main = get_tree().current_scene
-	main.add_child(slash) 
-	slash.global_position = pos
+	
+	var battle = battle_units.battle_scene
+	if battle:
+		battle.add_child(slash) 
+		slash.global_position = pos
 

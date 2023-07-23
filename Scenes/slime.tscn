@@ -9,10 +9,6 @@ attack_damage = 3
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_angtm")
 
-[node name="Label" parent="." index="1"]
-text = "35hp
-"
-
 [node name="HoverInfo" parent="." index="3"]
 custom_minimum_size = Vector2(32.725, 15.8)
 offset_left = -22.0
