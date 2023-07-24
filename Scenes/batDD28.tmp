@@ -1,0 +1,231 @@
+[gd_scene load_steps=11 format=3 uid="uid://cy2ytcema5j74"]
+
+[ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
+[ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
+[ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_ishl0"]
+[ext_resource type="PackedScene" uid="uid://d0trfhht85b0g" path="res://Scenes/Enemies/skeleton.tscn" id="4_367lb"]
+[ext_resource type="Script" path="res://Scripts/StatsPanel.gd" id="6_i8yhs"]
+[ext_resource type="Script" path="res://Scripts/BattleActionButtons.gd" id="7_h6moi"]
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="8_0m124"]
+
+[sub_resource type="Animation" id="Animation_qty82"]
+resource_name = "FadeToNewRoom"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yx0ob"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a5x0j"]
+_data = {
+"FadeToNewRoom": SubResource("Animation_qty82"),
+"RESET": SubResource("Animation_yx0ob")
+}
+
+[node name="Battle" type="Node"]
+script = ExtResource("1_amr2d")
+enemies = Array[PackedScene]([ExtResource("4_367lb")])
+
+[node name="Dungeon" type="Sprite2D" parent="."]
+position = Vector2(45, 80)
+texture = ExtResource("1_ishl0")
+
+[node name="EnemyPosition" type="Marker2D" parent="."]
+position = Vector2(48, 32)
+
+[node name="MobileRpgMockup" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.12549)
+position = Vector2(45, 80)
+texture = ExtResource("1_ikiff")
+metadata/_edit_lock_ = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 0
+offset_right = 90.0
+offset_bottom = 50.0
+mouse_filter = 2
+
+[node name="NextRoomButton" type="Button" parent="UI/CenterContainer"]
+custom_minimum_size = Vector2(70, 13)
+layout_mode = 2
+text = "ENTER NEXT ROOM"
+
+[node name="StatsPanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 50.0
+offset_right = 87.0
+offset_bottom = 70.0
+script = ExtResource("6_i8yhs")
+
+[node name="StatsContainer" type="HBoxContainer" parent="UI/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "HP
+25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "AP
+3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MP" type="Label" parent="UI/StatsPanel/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "MP
+10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextboxPanel" type="Panel" parent="UI"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 137.0
+offset_right = 92.0
+offset_bottom = 160.0
+
+[node name="Textbox" type="RichTextLabel" parent="UI/TextboxPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 3
+theme_override_font_sizes/normal_font_size = 5
+scroll_active = false
+
+[node name="BattleActionButtons" type="GridContainer" parent="UI"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 72.0
+offset_right = 81.0
+offset_bottom = 136.0
+theme_override_constants/h_separation = 8
+columns = 2
+script = ExtResource("7_h6moi")
+
+[node name="Fade" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a5x0j")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_0m124")
+
+[node name="BlackOverlay" type="ColorRect" parent="CanvasLayer/Pause"]
+modulate = Color(0, 0, 0, 0.827451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 14.0
+offset_right = -5.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenuButton" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "START AGAIN"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "QUIT GAME"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 9.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 5
+text = "▶"
+
+[connection signal="pressed" from="UI/CenterContainer/NextRoomButton" to="." method="_on_next_room_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/QuitButton" to="CanvasLayer/Pause" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Pause" method="_on_button_pressed"]

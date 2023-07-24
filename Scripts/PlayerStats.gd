@@ -16,13 +16,17 @@ var ap = max_ap:
 var max_mp = 10
 var mp = max_mp:
 	set = SetMp
-var action_buttons : Array[PackedScene] 
+	
+var action_buttons : Array[PackedScene]
+var enemies_to_face : Array[PackedScene] 
 
 # Action numbers. Just damage because I don't want to have too many clogging memory.
 # Refer to their action buttons to see their cost and mp use. 
 var SLASH_DAMAGE = 100
 var FIREBALL_DAMAGE = 9
 var DRAIN_DAMAGE = 3
+
+var current_level = 1
 
 
 # Keeps track of what intersection the player is at.
@@ -59,6 +63,14 @@ func _ready():
 	action_buttons.append(load("res://Scenes/meditate_button.tscn")) 
 	action_buttons.append(load("res://Scenes/drain_action_button.tscn")) 
 	action_buttons.append(load("res://Scenes/fireball_action_button.tscn")) 
+	
+
+func AddAction(action): 
+	action_buttons.append(action) 
+	
+
+func RemoveAction(): 
+	pass
 	
 
 

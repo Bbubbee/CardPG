@@ -5,21 +5,44 @@ extends Node
 @onready var next_room_button = $UI/CenterContainer/NextRoomButton
 @onready var enemy_position = $EnemyPosition
 
-@export var enemies : Array[PackedScene] 
+var enemies : Array[PackedScene] 
 
 var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
-enum {
-	LEVEL1,
-	LEVEL2,
-	LEVEL3
-}
-var current_level = LEVEL1
+
 
 func _ready():
+	print(PlayerStats.current_level)
 	battle_units.battle_scene = self
+	SelectEnemies() 
 	CreateNewEnemy()
 	StartPlayerTurn()
+	
+# Chooses the enemies to face based on the current level. 
+func SelectEnemies():
+	var level = PlayerStats.current_level
+	
+#	ction_buttons.append(load("res://Scenes/sword_action_button.tscn")) 
+
+	if level == 2: 
+		enemies.append(load("res://Scenes/Enemies/skeleton.tscn"))
+		enemies.append(load("res://Scenes/Enemies/golem.tscn")) 
+	elif level == 3:
+		enemies.append(load("res://Scenes/Enemies/skeleton.tscn")) 
+		enemies.append(load("res://Scenes/Enemies/golem.tscn")) 
+	else:  
+#		enemies.append(load("res://Scenes/Enemies/skeleton.tscn")) 
+#		enemies.append(load("res://Scenes/Enemies/golem.tscn")) 
+		enemies.append(load("res://Scenes/Enemies/slime.tscn"))
+		enemies.append(load("res://Scenes/Enemies/rat.tscn"))
+		
+func CreateNewEnemy(): 
+	enemies.shuffle()
+	var enemy = enemies[0].instantiate()
+	battle_units.enemy = enemy
+	enemy_position.add_child(enemy)
+	enemy.died.connect(_on_enemy_died)
+
 
 func _exit_tree():
 	PlayerStats.intersection += 1
@@ -71,12 +94,6 @@ func _on_enemy_died():
 	PlayerStats.ap = PlayerStats.max_ap
 	player_battle_action_buttons.hide() 
 	
-func CreateNewEnemy(): 
-	enemies.shuffle()
-	var enemy = enemies[0].instantiate()
-	battle_units.enemy = enemy
-	enemy_position.add_child(enemy)
-	enemy.died.connect(_on_enemy_died)
 
 
 	

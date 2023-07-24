@@ -58,7 +58,6 @@ func Dies():
 	# attack it once it's in the process of dying. 
 	battle_units.enemy = null
 	
-
 	animation_player.play("Fades")
 	await animation_player.animation_finished
 	emit_signal("end_turn") 

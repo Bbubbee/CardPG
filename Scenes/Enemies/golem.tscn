@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31th1mrydr6i"]
+
+[ext_resource type="PackedScene" uid="uid://dim4havfaaoc0" path="res://Scenes/enemy.tscn" id="1_f65gm"]
+[ext_resource type="Texture2D" uid="uid://c1hqabkg8j1eb" path="res://Assets/Animations/Enemies/stone_golem.png" id="2_os488"]
+
+[node name="Golem" instance=ExtResource("1_f65gm")]
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_os488")
+
+[node name="HoverInfo" parent="." index="3"]
+custom_minimum_size = Vector2(51.69, 32.245)
+description = "A stone golem"

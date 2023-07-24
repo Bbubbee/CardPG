@@ -82,7 +82,7 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
-text = "NEXT"
+text = "CONTINUE"
 
 [connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonA" to="." method="_on_choice_button_a_pressed"]
 [connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonB" to="." method="_on_choice_button_b_pressed"]
