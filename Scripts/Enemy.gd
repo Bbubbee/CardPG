@@ -35,13 +35,15 @@ func StartTurn():
 	
 		
 func Attack() -> void:
-
 	animation_player.play("Attack")  # Calls DealDamage().
 	await animation_player.animation_finished  
 	emit_signal("end_turn")
 	
 func DealDamage(): 
-	PlayerStats.hp -= attack_damage
+	if PlayerStats.has_shield: 
+		PlayerStats.hp -= attack_damage - PlayerStats.SHIELD_BLOCK
+	else: 
+		PlayerStats.hp -= attack_damage
 
 
 func TakeDamage(amount): 

@@ -2,6 +2,16 @@ extends "res://Scripts/Action Buttons/action_button.gd"
 
 const SLASH = preload("res://Scenes/slash.tscn")
 
+func _ready():
+	if PlayerStats.has_upgraded_sword:
+		text = "SWORD+"
+		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE_UPGRADED)+" dmg, Restores 2 mp"
+	else:
+		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE)+" dmg, Restores 2 mp"
+		text = "SWORD"
+		
+	
+
 
 func _on_pressed(): 
 	var enemy = battle_units.enemy
@@ -11,7 +21,10 @@ func _on_pressed():
 	if enemy and player: 
 		if pressable: 
 			CreateSlash(enemy.global_position) 
-			enemy.TakeDamage(player.SLASH_DAMAGE)
+			if player.has_upgraded_sword:
+				enemy.TakeDamage(player.SLASH_DAMAGE_UPGRADED)
+			else: 
+				enemy.TakeDamage(player.SLASH_DAMAGE)
 			player.mp += 2
 			player.ap -= 1  
 		

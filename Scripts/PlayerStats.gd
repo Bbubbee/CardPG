@@ -26,6 +26,13 @@ var SLASH_DAMAGE = 100
 var FIREBALL_DAMAGE = 9
 var DRAIN_DAMAGE = 3
 
+
+var has_upgraded_sword = false
+var SLASH_DAMAGE_UPGRADED = 200
+var has_shield = false
+var SHIELD_BLOCK = 2
+var skele_route = false
+
 var current_level = 1
 
 

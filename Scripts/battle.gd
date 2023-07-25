@@ -14,6 +14,7 @@ var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 func _ready():
 	print(PlayerStats.current_level)
 	battle_units.battle_scene = self
+	ReadyShield()
 	SelectEnemies() 
 	CreateNewEnemy()
 	StartPlayerTurn()
@@ -25,16 +26,23 @@ func SelectEnemies():
 #	ction_buttons.append(load("res://Scenes/sword_action_button.tscn")) 
 
 	if level == 2: 
-		enemies.append(load("res://Scenes/Enemies/skeleton.tscn"))
 		enemies.append(load("res://Scenes/Enemies/golem.tscn")) 
+		if PlayerStats.skele_route: 
+			enemies.append(load("res://Scenes/Enemies/skeleton.tscn"))
+		else: 
+			enemies.append(load("res://Scenes/Enemies/spider.tscn"))
 	elif level == 3:
-		enemies.append(load("res://Scenes/Enemies/skeleton.tscn")) 
-		enemies.append(load("res://Scenes/Enemies/golem.tscn")) 
+		enemies.append(load("res://Scenes/Enemies/cultist_mage.tscn"))
+		enemies.append(load("res://Scenes/Enemies/cultist_melee.tscn"))
 	else:  
 #		enemies.append(load("res://Scenes/Enemies/skeleton.tscn")) 
 #		enemies.append(load("res://Scenes/Enemies/golem.tscn")) 
-		enemies.append(load("res://Scenes/Enemies/slime.tscn"))
-		enemies.append(load("res://Scenes/Enemies/rat.tscn"))
+#		enemies.append(load("res://Scenes/Enemies/spider.tscn"))
+#		enemies.append(load("res://Scenes/Enemies/cultist_mage.tscn"))
+#		enemies.append(load("res://Scenes/Enemies/cultist_melee.tscn"))
+		enemies.append(load("res://Scenes/Enemies/grim_beast.tscn"))
+#		enemies.append(load("res://Scenes/Enemies/slime.tscn"))
+#		enemies.append(load("res://Scenes/Enemies/rat.tscn"))
 		
 func CreateNewEnemy(): 
 	enemies.shuffle()
@@ -42,6 +50,10 @@ func CreateNewEnemy():
 	battle_units.enemy = enemy
 	enemy_position.add_child(enemy)
 	enemy.died.connect(_on_enemy_died)
+	
+func ReadyShield():
+	if PlayerStats.has_shield: 
+		$Shield.show() 
 
 
 func _exit_tree():

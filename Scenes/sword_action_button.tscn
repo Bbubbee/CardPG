@@ -8,4 +8,4 @@ text = "SWORD"
 script = ExtResource("2_0kg1a")
 
 [node name="HoverInfo" parent="." index="0"]
-description = "Deals 4 damage"
+description = "Deals 4 dmg, Restores 2 mp"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqv07tbpvukfd"]
+
+[ext_resource type="PackedScene" uid="uid://dim4havfaaoc0" path="res://Scenes/enemy.tscn" id="1_s4kw0"]
+[ext_resource type="Texture2D" uid="uid://dgovsm563pxa" path="res://Assets/Animations/Enemies/spider.png" id="2_pvoju"]
+
+[node name="Spider" instance=ExtResource("1_s4kw0")]
+attack_damage = 7
+max_hp = 28
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_pvoju")
+
+[node name="HoverInfo" parent="." index="3"]
+offset_left = -18.0
+offset_top = -14.0
+offset_right = 19.0
+offset_bottom = 15.0
+description = "A giant spider"

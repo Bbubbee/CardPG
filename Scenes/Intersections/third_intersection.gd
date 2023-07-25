@@ -1,23 +1,26 @@
 extends "res://Scripts/intersection.gd"
 
-var room = 1
+
+
 
 func _ready():
 	story_text.intersection_position = "start"
-	information_text.text = story_text.intersection_two[story_text.intersection_position]
-	pass
+	information_text.text = story_text.intersection_three[story_text.intersection_position]
+
 	
 func _process(_delta):
-	information_text.text = story_text.intersection_two[story_text.intersection_position]
+	information_text.text = story_text.intersection_three[story_text.intersection_position]
+
 
 func _on_choice_button_a_pressed():
 	story_text.intersection_position = "option a"
-	PlayerStats.skele_route = true
+	PlayerStats.has_upgraded_sword = true 
 	choice_buttons.hide()
 	next_button.show() 
 
 
 func _on_choice_button_b_pressed():
 	story_text.intersection_position = "option b"
+	PlayerStats.has_shield = true
 	choice_buttons.hide()
 	next_button.show() 
