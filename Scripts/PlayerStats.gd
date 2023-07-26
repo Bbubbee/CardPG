@@ -37,7 +37,7 @@ var current_level = 1
 
 
 # Keeps track of what intersection the player is at.
-var intersection = 1
+var intersection = 6
 
 
 func SetHp(new_hp):
@@ -69,8 +69,17 @@ func _ready():
 	action_buttons.append(load("res://Scenes/heal_action_button.tscn")) 
 	action_buttons.append(load("res://Scenes/meditate_button.tscn")) 
 	action_buttons.append(load("res://Scenes/drain_action_button.tscn")) 
-	action_buttons.append(load("res://Scenes/fireball_action_button.tscn")) 
+	action_buttons.append(load("res://Scenes/fireball_action_button.tscn"))
+	action_buttons.append(load("res://Scenes/Action Buttons/blight.tscn"))
+	action_buttons.append(load("res://Scenes/Action Buttons/rend.tscn"))  
 	
+
+func TakeDamage(dmg):
+	if has_shield:
+		hp -= dmg-SHIELD_BLOCK
+	else:
+		hp -= dmg
+
 
 func AddAction(action): 
 	action_buttons.append(action) 

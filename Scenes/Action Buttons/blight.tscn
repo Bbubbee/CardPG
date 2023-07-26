@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg85t3cf01v3f"]
+
+[ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_41i70"]
+
+[node name="Blight" instance=ExtResource("1_41i70")]
+text = "BLIGHT"
+
+[node name="HoverInfo" parent="." index="0"]
+description = "\"Piercing ray of light\" 
+"

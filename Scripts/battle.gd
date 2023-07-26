@@ -57,6 +57,7 @@ func ReadyShield():
 
 
 func _exit_tree():
+	PlayerStats.ap = PlayerStats.max_ap
 	PlayerStats.intersection += 1
 	battle_units.battle_scene = null
 	
@@ -103,7 +104,7 @@ func _on_next_room_button_pressed():
 
 func _on_enemy_died(): 
 	next_room_button.show()
-	PlayerStats.ap = PlayerStats.max_ap
+#	PlayerStats.ap = PlayerStats.max_ap
 	player_battle_action_buttons.hide() 
 	
 

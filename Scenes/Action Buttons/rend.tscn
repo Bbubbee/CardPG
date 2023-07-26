@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddjxd38dbgnc3"]
+
+[ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_jm5il"]
+[ext_resource type="Script" path="res://Scenes/Action Buttons/rend.gd" id="2_wlp01"]
+
+[node name="Rend" instance=ExtResource("1_jm5il")]
+text = "REND"
+script = ExtResource("2_wlp01")
+damage = 8
+mp_cost = 5
+
+[node name="HoverInfo" parent="." index="0"]
+description = "Slashes with a holy light
+"

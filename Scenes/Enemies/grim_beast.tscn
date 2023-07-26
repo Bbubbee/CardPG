@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://yrh2efx2o8un" path="res://Assets/Animations/Enemies/boss.png" id="2_tontm"]
 
 [node name="GrimBeast" instance=ExtResource("1_hd375")]
-attack_damage = 17
+attack_damage = 10
 max_hp = 105
 
 [node name="Sprite" parent="." index="0"]

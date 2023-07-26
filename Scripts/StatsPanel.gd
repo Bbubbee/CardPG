@@ -38,7 +38,7 @@ func _on_player_stats_hp_changed(val):
 	var change = int(hp_label.text) - val
 	change *= -1
 	
-	hp_label.text = "AP\n"+str(val)
+	hp_label.text = "HP\n"+str(val)
 	
 	var x = stats_changed_label.instantiate()
 	hp_label.add_child(x)
@@ -52,7 +52,7 @@ func _on_player_stats_mp_changed(val):
 	var change = int(mp_label.text) - val
 	change *= -1
 	
-	mp_label.text = "AP\n"+str(val)
+	mp_label.text = "MP\n"+str(val)
 	
 	var x = stats_changed_label.instantiate()
 	mp_label.add_child(x)

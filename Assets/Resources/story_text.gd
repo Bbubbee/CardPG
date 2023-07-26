@@ -50,15 +50,18 @@ var intersection_four = {
 }
 
 var intersection_five = {
-	"start": "You find a ",
+	"start": "You come across a shrine of a smiling child. A voice emenates in your mind. 
+	\n'A great trial awaits you. Shall I empower your hand (A) or your mind(B)?'",
+	"option a": "Gained: REND", 
+	"option b": "Gained: BLIGHT", 
+}
+
+var intersection_six = {
+	"start": "This is your last moment of respite. Ahead lies the grim beast.
+	\nHP and MP RESTORED",
 	"option a": "a text", 
 	"option b": "b text", 
 }
 
-var intersection_six = {
-	"start": "You come across a shrine of a smiling child. A voice emenates in your mind. 
-	\n'A great trial awaits you. Shall I empower your hand (A) or your mind(B)?'",
-	"option a": "a text", 
-	"option b": "b text", 
-}
+
 

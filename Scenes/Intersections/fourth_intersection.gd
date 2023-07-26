@@ -17,5 +17,6 @@ func _on_choice_button_a_pressed():
 
 func _on_choice_button_b_pressed():
 	story_text.intersection_position = "option b"
+	PlayerStats.AddAction(load("res://Scenes/Action Buttons/crux.tscn"))
 	choice_buttons.hide()
 	next_button.show() 

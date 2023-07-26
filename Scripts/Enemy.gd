@@ -4,6 +4,7 @@ var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
 signal died 
 signal end_turn
+signal action_done
 
 @export var attack_damage: int = 4
 @export var max_hp: int = 35 
@@ -16,6 +17,9 @@ signal end_turn
 		hp = clamp(new_hp, 0, max_hp)
 		hp_label.text = str(hp) + "hp"
 
+var max_ap = 2
+var ap = max_ap
+
 
 func _ready():
 	hp_label.text = str(hp)+"hp"
@@ -27,23 +31,31 @@ func _exit_tree():
 func StartTurn(): 
 	await get_tree().create_timer(0.4).timeout 
 	
+	ap = max_ap
 	# NOTE: Used to check if is dead here. 
 	# Redundant because death check happens when enemy takes damage. 
 	# Recode if there is means of enemy dying DURING their turn. 
 	if not IsDead():
-		Attack()
+		while ap > 0: 
+			print("enemy: action")
+			Attack()
+			await action_done
+			ap -= 1
+	
+	emit_signal("end_turn")
+	
+	
+		
 	
 		
 func Attack() -> void:
 	animation_player.play("Attack")  # Calls DealDamage().
 	await animation_player.animation_finished  
-	emit_signal("end_turn")
+	emit_signal("action_done")
+	
 	
 func DealDamage(): 
-	if PlayerStats.has_shield: 
-		PlayerStats.hp -= attack_damage - PlayerStats.SHIELD_BLOCK
-	else: 
-		PlayerStats.hp -= attack_damage
+	PlayerStats.TakeDamage(attack_damage)
 
 
 func TakeDamage(amount): 
@@ -56,12 +68,11 @@ func TakeDamage(amount):
 		Dies()
 	
 func Dies(): 
-	# TEMP: Removes enemy from battle_units early so that the player can not
-	# attack it once it's in the process of dying. 
 	battle_units.enemy = null
 	
 	animation_player.play("Fades")
 	await animation_player.animation_finished
+	
 	emit_signal("end_turn") 
 	emit_signal("died") 
 	queue_free()

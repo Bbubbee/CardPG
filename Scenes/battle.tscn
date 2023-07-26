@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cy2ytcema5j74"]
+[gd_scene load_steps=13 format=3 uid="uid://cy2ytcema5j74"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
 [ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_ishl0"]
+[ext_resource type="Script" path="res://Scenes/Textbox.gd" id="5_qqkap"]
 [ext_resource type="Script" path="res://Scripts/StatsPanel.gd" id="6_i8yhs"]
 [ext_resource type="Texture2D" uid="uid://dkor2b8mwgxan" path="res://Assets/Images/shield.png" id="7_f5orb"]
 [ext_resource type="Script" path="res://Scripts/BattleActionButtons.gd" id="7_h6moi"]
@@ -147,7 +148,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 5
-scroll_active = false
+script = ExtResource("5_qqkap")
 
 [node name="BattleActionButtons" type="GridContainer" parent="UI"]
 layout_mode = 0
