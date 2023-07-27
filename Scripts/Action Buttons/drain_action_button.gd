@@ -11,6 +11,8 @@ func _on_pressed():
 	if enemy and player: 
 		if player.mp >= 3: 
 			CreateDrain(enemy.global_position)
+			sound_effect.play()
+			$SoundEffect2.play()
 			enemy.TakeDamage(player.DRAIN_DAMAGE)
 			player.mp -= 3
 			player.hp += 3

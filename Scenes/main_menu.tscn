@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk6ydcq1k125s"]
+[gd_scene load_steps=5 format=3 uid="uid://dk6ydcq1k125s"]
 
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_8m1h1"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ryreb"]
+[ext_resource type="AudioStream" uid="uid://dx22fqk0wxg2q" path="res://Assets/Audio/Buttons/click-button-140881.mp3" id="3_jp4bs"]
+[ext_resource type="AudioStream" uid="uid://b7mbf2bvw74pv" path="res://Assets/Audio/Buttons/button.mp3" id="4_uiwd5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -75,4 +77,14 @@ Make a choice at each intersection
 
 Choose wisely!"
 
+[node name="ButtonSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jp4bs")
+volume_db = -10.0
+pitch_scale = 8.0
+
+[node name="SelectSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uiwd5")
+volume_db = -8.0
+
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

@@ -6,6 +6,8 @@
 
 [node name="CultistMage" instance=ExtResource("1_baunt")]
 script = ExtResource("2_7httu")
+attack_damage = 8
+max_hp = 40
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.8, 0.8)

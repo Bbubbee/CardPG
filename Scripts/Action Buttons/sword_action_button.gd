@@ -2,6 +2,8 @@ extends "res://Scripts/Action Buttons/action_button.gd"
 
 const SLASH = preload("res://Scenes/slash.tscn")
 
+@onready var bonus_sfx = $BonusSfx
+
 func _ready():
 	if PlayerStats.has_upgraded_sword:
 		text = "SWORD+"
@@ -18,6 +20,7 @@ func _on_pressed():
 	if enemy and player: 
 		if pressable: 
 			CreateSlash(enemy.global_position) 
+			PlaySfx()
 			if player.has_upgraded_sword:
 				enemy.TakeDamage(player.SLASH_DAMAGE_UPGRADED)
 			else: 
@@ -32,7 +35,13 @@ func _on_pressed():
 #			battle_units.battle_log.AddToBattleLog("\nattacked enemy with sword ")
 			
 			
-
+func PlaySfx():
+	randomize()
+	var r = randi_range(0, 1)
+	if r == 1: 
+		sound_effect.play()
+	else: 
+		bonus_sfx.play()
 		
 func CreateSlash(pos): 
 	var slash = SLASH.instantiate() 

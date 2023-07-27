@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cy2ytcema5j74"]
+[gd_scene load_steps=15 format=3 uid="uid://cy2ytcema5j74"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_amr2d"]
 [ext_resource type="Texture2D" uid="uid://dmdkxoucmmf5r" path="res://Assets/Images/Mobile RPG Mockup.png" id="1_ikiff"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dkor2b8mwgxan" path="res://Assets/Images/shield.png" id="7_f5orb"]
 [ext_resource type="Script" path="res://Scripts/BattleActionButtons.gd" id="7_h6moi"]
 [ext_resource type="Script" path="res://Scripts/Pause.gd" id="8_0m124"]
+[ext_resource type="AudioStream" uid="uid://dx22fqk0wxg2q" path="res://Assets/Audio/Buttons/click-button-140881.mp3" id="8_0qoyt"]
 [ext_resource type="PackedScene" uid="uid://c8emammtcxswt" path="res://Scenes/hover_info.tscn" id="8_mbmal"]
+[ext_resource type="AudioStream" uid="uid://b7mbf2bvw74pv" path="res://Assets/Audio/Buttons/button.mp3" id="9_k7gi0"]
 
 [sub_resource type="Animation" id="Animation_qty82"]
 resource_name = "FadeToNewRoom"
@@ -148,7 +150,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_separation = 3
 theme_override_font_sizes/normal_font_size = 5
-scroll_following = true
+scroll_active = false
 script = ExtResource("5_qqkap")
 
 [node name="BattleActionButtons" type="GridContainer" parent="UI"]
@@ -254,6 +256,15 @@ offset_bottom = 10.0
 theme_override_font_sizes/font_size = 5
 text = "▶"
 
+[node name="ButtonSfx" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("8_0qoyt")
+volume_db = -10.0
+pitch_scale = 8.0
+
+[node name="SelectSfx" type="AudioStreamPlayer2D" parent="CanvasLayer"]
+stream = ExtResource("9_k7gi0")
+volume_db = -8.0
+
 [node name="Shield" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(26, 60)
@@ -269,5 +280,8 @@ description = "Shield
 Blocks 2 damage"
 
 [connection signal="pressed" from="UI/CenterContainer/NextRoomButton" to="." method="_on_next_room_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/VBoxContainer/MainMenuButton" to="CanvasLayer/Pause" method="_on_main_menu_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/VBoxContainer/QuitButton" to="CanvasLayer/Pause" method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/QuitButton" to="CanvasLayer/Pause" method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="CanvasLayer/Pause" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Pause" method="_on_button_pressed"]

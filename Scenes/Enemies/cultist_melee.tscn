@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://okcqts88hlhq" path="res://Assets/Animations/Enemies/cultist_melee.png" id="2_exa56"]
 
 [node name="CultistMelee" instance=ExtResource("1_5bv4d")]
+attack_damage = 9
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.8, 0.8)

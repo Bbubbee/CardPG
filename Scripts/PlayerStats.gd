@@ -22,7 +22,7 @@ var enemies_to_face : Array[PackedScene]
 
 # Action numbers. Just damage because I don't want to have too many clogging memory.
 # Refer to their action buttons to see their cost and mp use. 
-var SLASH_DAMAGE = 100
+var SLASH_DAMAGE = 4
 var FIREBALL_DAMAGE = 9
 var DRAIN_DAMAGE = 3
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5sh2ilwddxjc"]
+[gd_scene load_steps=5 format=3 uid="uid://5sh2ilwddxjc"]
 
 [ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_8x22l"]
 [ext_resource type="Script" path="res://Scripts/Action Buttons/drain_action_button.gd" id="2_x7amq"]
+[ext_resource type="AudioStream" uid="uid://bf2kjd6fxdo2l" path="res://Assets/Audio/healpop.mp3" id="3_bb6k3"]
+[ext_resource type="AudioStream" uid="uid://btfxxj0pegddd" path="res://Assets/Audio/magic-strike-5856.mp3" id="4_yaj3m"]
 
 [node name="DrainActionButton" instance=ExtResource("1_8x22l")]
 text = "DRAIN"
@@ -10,3 +12,11 @@ script = ExtResource("2_x7amq")
 [node name="HoverInfo" parent="." index="0"]
 description = "Costs 3 mp, Deals 3 damage
 Restores 3 hp"
+
+[node name="SoundEffect" parent="." index="2"]
+stream = ExtResource("3_bb6k3")
+volume_db = -15.0
+
+[node name="SoundEffect2" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("4_yaj3m")
+volume_db = -7.0

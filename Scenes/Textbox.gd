@@ -13,12 +13,13 @@ func _exit_tree():
 	battle_units.battle_log = null
 	
 
-func _process(delta):
+func _process(_delta):
 	if is_hovering:
 		return 
 	else: 
 		text = battle_log 
 
 
-func AddToBattleLog(text): 
-	battle_log += text 
+func AddToBattleLog(_text): 
+#	battle_log += text 
+	pass

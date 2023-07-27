@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3ss3efuriudo"]
+[gd_scene load_steps=4 format=3 uid="uid://c3ss3efuriudo"]
 
 [ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_5jhuf"]
 [ext_resource type="Script" path="res://Scripts/meditate_button.gd" id="2_rwt74"]
+[ext_resource type="AudioStream" uid="uid://bjcveke3j0wy" path="res://Assets/Audio/regen.mp3" id="4_7hgrr"]
 
 [node name="MeditateButton" instance=ExtResource("1_5jhuf")]
 text = "MED"
@@ -9,3 +10,7 @@ script = ExtResource("2_rwt74")
 
 [node name="HoverInfo" parent="." index="0"]
 description = "Restores 6 mp"
+
+[node name="SoundEffect" parent="." index="2"]
+stream = ExtResource("4_7hgrr")
+volume_db = -5.0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmg7yj2mknkn4"]
+[gd_scene load_steps=5 format=3 uid="uid://dmg7yj2mknkn4"]
 
 [ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_owoc7"]
 [ext_resource type="Script" path="res://Scripts/Action Buttons/sword_action_button.gd" id="2_0kg1a"]
+[ext_resource type="AudioStream" uid="uid://cw87v0mhb3e4m" path="res://Assets/Audio/sword1.mp3" id="3_hxi3m"]
+[ext_resource type="AudioStream" uid="uid://b0gp3ttnnkf0t" path="res://Assets/Audio/sword2.mp3" id="4_1mx1a"]
 
 [node name="SwordActionButton" instance=ExtResource("1_owoc7")]
 text = "SWORD"
@@ -9,3 +11,10 @@ script = ExtResource("2_0kg1a")
 
 [node name="HoverInfo" parent="." index="0"]
 description = "Deals 4 dmg, Restores 2 mp"
+
+[node name="SoundEffect" parent="." index="2"]
+stream = ExtResource("3_hxi3m")
+
+[node name="BonusSfx" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("4_1mx1a")
+volume_db = -10.0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgcrqwl65oxtb"]
+[gd_scene load_steps=5 format=3 uid="uid://dgcrqwl65oxtb"]
 
 [ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_v7655"]
 [ext_resource type="Script" path="res://Scripts/Action Buttons/fireball_action_button.gd" id="2_g10ud"]
+[ext_resource type="AudioStream" uid="uid://mvh4tvo2rf36" path="res://Assets/Audio/fire-magic-6947.mp3" id="3_o1rsi"]
+[ext_resource type="AudioStream" uid="uid://d2aenaffprslf" path="res://Assets/Audio/magic-spell-6005.mp3" id="4_8pris"]
 
 [node name="FireballActionButton" instance=ExtResource("1_v7655")]
 theme_override_font_sizes/font_size = 5
@@ -12,3 +14,11 @@ script = ExtResource("2_g10ud")
 [node name="HoverInfo" parent="." index="0"]
 description = "Deals 8 damage
 Costs 8 mp"
+
+[node name="SoundEffect" parent="." index="2"]
+stream = ExtResource("3_o1rsi")
+volume_db = -5.0
+
+[node name="SoundEffect2" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("4_8pris")
+volume_db = -10.0

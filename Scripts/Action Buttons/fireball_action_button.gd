@@ -10,6 +10,8 @@ func _on_pressed():
 	if enemy and player: 
 		if player.mp >= 8: 
 			CreateFireball(enemy.global_position)
+			sound_effect.play()
+			$SoundEffect2.play()
 			enemy.TakeDamage(player.FIREBALL_DAMAGE)
 			player.mp -= 8
 			player.ap -= 1
