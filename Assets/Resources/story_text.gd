@@ -64,4 +64,13 @@ var intersection_six = {
 }
 
 
+var player_action_description = {
+	"sword": "You swing with your sword: 5dmg"
+}
+
+var enemy_action_description = {
+	
+}
+
+
 

@@ -37,16 +37,23 @@ func StartTurn():
 	# Recode if there is means of enemy dying DURING their turn. 
 	if not IsDead():
 		while ap > 0: 
-			print("enemy: action")
-			Attack()
+			ChooseAnAction()
 			await action_done
 			ap -= 1
+			await get_tree().create_timer(0.4).timeout 
 	
 	emit_signal("end_turn")
-	
-	
-		
-	
+
+# OVERRIDE for other enemies. May add another base action.
+# You have to emit signal "action_done" after each potential action! 
+func ChooseAnAction():
+	randomize()
+	var r = randi_range(0, 1)
+	if r == 1: 
+		Attack()
+	else: 
+		Attack()
+
 		
 func Attack() -> void:
 	animation_player.play("Attack")  # Calls DealDamage().
@@ -66,6 +73,7 @@ func TakeDamage(amount):
 	
 	if IsDead():
 		Dies()
+	emit_signal("action_done")
 	
 func Dies(): 
 	battle_units.enemy = null

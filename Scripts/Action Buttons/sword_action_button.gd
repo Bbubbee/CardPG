@@ -10,14 +10,11 @@ func _ready():
 		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE)+" dmg, Restores 2 mp"
 		text = "SWORD"
 		
-	
-
 
 func _on_pressed(): 
 	var enemy = battle_units.enemy
 	var player = PlayerStats
-	var stats_container
-	
+
 	if enemy and player: 
 		if pressable: 
 			CreateSlash(enemy.global_position) 
@@ -31,6 +28,10 @@ func _on_pressed():
 			# Start action button cool down.
 			pressable = false
 			$Cooldown.start()
+			
+#			battle_units.battle_log.AddToBattleLog("\nattacked enemy with sword ")
+			
+			
 
 		
 func CreateSlash(pos): 

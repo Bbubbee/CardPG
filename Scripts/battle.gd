@@ -12,7 +12,6 @@ var battle_units = preload("res://Assets/Resources/BattleUnits.tres")
 
 
 func _ready():
-	print(PlayerStats.current_level)
 	battle_units.battle_scene = self
 	ReadyShield()
 	SelectEnemies() 
@@ -21,9 +20,7 @@ func _ready():
 	
 # Chooses the enemies to face based on the current level. 
 func SelectEnemies():
-	var level = PlayerStats.current_level
-	
-#	ction_buttons.append(load("res://Scenes/sword_action_button.tscn")) 
+	var level = LevelManager.current_level
 
 	if level == 2: 
 		enemies.append(load("res://Scenes/Enemies/golem.tscn")) 
@@ -40,9 +37,9 @@ func SelectEnemies():
 #		enemies.append(load("res://Scenes/Enemies/spider.tscn"))
 #		enemies.append(load("res://Scenes/Enemies/cultist_mage.tscn"))
 #		enemies.append(load("res://Scenes/Enemies/cultist_melee.tscn"))
-		enemies.append(load("res://Scenes/Enemies/grim_beast.tscn"))
-#		enemies.append(load("res://Scenes/Enemies/slime.tscn"))
-#		enemies.append(load("res://Scenes/Enemies/rat.tscn"))
+#		enemies.append(load("res://Scenes/Enemies/grim_beast.tscn"))
+		enemies.append(load("res://Scenes/Enemies/slime.tscn"))
+		enemies.append(load("res://Scenes/Enemies/rat.tscn"))
 		
 func CreateNewEnemy(): 
 	enemies.shuffle()
@@ -83,24 +80,7 @@ func StartEnemyTurn():
 func _on_next_room_button_pressed():
 	next_room_button.disabled = true 
 	
-	match PlayerStats.intersection: 
-		3:
-			SceneTransition.ChangeScene("res://Scenes/Intersections/first_intersection.tscn")
-		6: 
-			SceneTransition.ChangeScene("res://Scenes/level_2.tscn")
-			# Goes to second intersection after. 
-		9:
-			SceneTransition.ChangeScene("res://Scenes/Intersections/third_intersection.tscn")
-		12:
-			SceneTransition.ChangeScene("res://Scenes/level_3.tscn")	
-			# Goes to fourth intersection after. 
-		15:
-			SceneTransition.ChangeScene("res://Scenes/Intersections/fifth_intersection.tscn")
-		18:
-			SceneTransition.ChangeScene("res://Scenes/Intersections/sixth_intersection.tscn")
-			# Show boss message after. Heal and restore mana.
-		_: 
-			SceneTransition.ChangeScene("res://Scenes/battle.tscn")
+	LevelManager.GoToNextIntersection()
 
 func _on_enemy_died(): 
 	next_room_button.show()

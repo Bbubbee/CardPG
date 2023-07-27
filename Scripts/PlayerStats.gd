@@ -37,7 +37,7 @@ var current_level = 1
 
 
 # Keeps track of what intersection the player is at.
-var intersection = 6
+var intersection = 1
 
 
 func SetHp(new_hp):
@@ -79,6 +79,16 @@ func TakeDamage(dmg):
 		hp -= dmg-SHIELD_BLOCK
 	else:
 		hp -= dmg
+		
+	if hp <= 0:
+		Dies()
+
+func RestoreStats(): 
+	hp = max_hp
+	mp = max_mp
+
+func Dies():
+	SceneTransition.ChangeScene("res://Scenes/game_over.tscn")
 
 
 func AddAction(action): 

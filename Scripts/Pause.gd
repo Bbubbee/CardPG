@@ -1,6 +1,10 @@
 extends Control
 
 
+@onready var label = $Panel/CurrentLevel 
+
+func _process(_delta):
+	label.text = "Current level: "+str(LevelManager.current_level)
 
 
 func _on_button_pressed():
