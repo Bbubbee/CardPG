@@ -7,34 +7,26 @@ const SLASH = preload("res://Scenes/slash.tscn")
 func _ready():
 	if PlayerStats.has_upgraded_sword:
 		text = "SWORD+"
-		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE_UPGRADED)+" dmg, Restores 2 mp"
+		$HoverInfo.description = "Deals "+str(damage)+" dmg, Restores 2 mp"
 	else:
 		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE)+" dmg, Restores 2 mp"
 		text = "SWORD"
-		
-
-func _on_pressed(): 
-	var enemy = battle_units.enemy
+	
+# OVERRIDDEN	
+func MainEffect(enemy): 
 	var player = PlayerStats
 
 	if enemy and player: 
-		if pressable: 
-			CreateSlash(enemy.global_position) 
-			PlaySfx()
-			if player.has_upgraded_sword:
-				enemy.TakeDamage(player.SLASH_DAMAGE_UPGRADED)
-			else: 
-				enemy.TakeDamage(player.SLASH_DAMAGE)
-			player.mp += 2
-			player.ap -= 1  
+		CreateSlash(enemy.global_position) 
+		if player.has_upgraded_sword:
+			enemy.TakeDamage(player.SLASH_DAMAGE_UPGRADED)
+		else: 
+			enemy.TakeDamage(damage)
+		player.mp += 2
+		player.ap -= 1  
 		
-			# Start action button cool down.
-			pressable = false
-			$Cooldown.start()
-			
-#			battle_units.battle_log.AddToBattleLog("\nattacked enemy with sword ")
-			
-			
+
+# OVERRIDDEN		
 func PlaySfx():
 	randomize()
 	var r = randi_range(0, 1)

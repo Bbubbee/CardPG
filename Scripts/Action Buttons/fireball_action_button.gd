@@ -16,6 +16,7 @@ func _on_pressed():
 			player.mp -= 8
 			player.ap -= 1
 	
+
 func CreateFireball(pos):
 	var fireball = FIREBALL.instantiate()
 	

@@ -4,6 +4,8 @@
 
 [node name="Blight" instance=ExtResource("1_41i70")]
 text = "BLIGHT"
+damage = 12
+mp_cost = 5
 
 [node name="HoverInfo" parent="." index="0"]
 description = "\"Piercing ray of light\" 
