@@ -6,7 +6,7 @@ func _ready():
 	story_text.intersection_position = "start"
 	information_text.text = story_text.intersection_one[story_text.intersection_position]
 	
-func _process(delta):
+func _process(_delta):
 	information_text.text = story_text.intersection_one[story_text.intersection_position]
 
 func _on_choice_button_a_pressed():
@@ -19,7 +19,6 @@ func _on_choice_button_a_pressed():
 func _on_choice_button_b_pressed():
 	story_text.intersection_position = "option b"
 	$Control/ButtonChoicesContainer.hide()
-	$Control/NextButton.show()
-#	PlayerStats.action_buttons.append(load("res://Scenes/fireball_action_button.tscn")) 
+	$Control/NextButton.show() 
 	PlayerStats.AddAction(load("res://Scenes/fireball_action_button.tscn"))
 

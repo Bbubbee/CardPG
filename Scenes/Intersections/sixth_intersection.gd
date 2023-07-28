@@ -8,4 +8,5 @@ func _ready():
 	next_button.show() 
 
 func _on_next_button_pressed():
+	PlayerStats.RestoreStats()
 	LevelManager.GoToBoss()

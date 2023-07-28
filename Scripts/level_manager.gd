@@ -1,7 +1,7 @@
 extends Node
 
 
-var current_room = 11
+var current_room = 0  # Start = 0.
 var current_level = 1
 
 

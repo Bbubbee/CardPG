@@ -33,7 +33,7 @@ var has_shield = false
 var SHIELD_BLOCK = 2
 var skele_route = false
 
-var current_level = 1
+var player_level = 1
 
 
 # Keeps track of what intersection the player is at.
@@ -86,6 +86,10 @@ func TakeDamage(dmg):
 func RestoreStats(): 
 	hp = max_hp
 	mp = max_mp
+
+func LevelUp(hp_increase, mp_increase): 
+	max_hp += hp_increase
+	max_mp += mp_increase
 
 func Dies():
 	SceneTransition.ChangeScene("res://Scenes/game_over.tscn")

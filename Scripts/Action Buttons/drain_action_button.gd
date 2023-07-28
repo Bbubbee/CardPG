@@ -3,6 +3,8 @@ extends "res://Scripts/Action Buttons/action_button.gd"
 
 const DRAIN = preload("res://Scenes/drain.tscn")
 
+@export var heal_amount: int = 3 
+
 
 func _on_pressed(): 
 	var enemy = battle_units.enemy
@@ -15,7 +17,7 @@ func _on_pressed():
 			$SoundEffect2.play()
 			enemy.TakeDamage(damage)
 			player.mp -= mp_cost
-			player.hp += damage
+			player.hp += heal_amount
 			player.ap -= ap_cost
 	
 func CreateDrain(pos):

@@ -7,4 +7,17 @@
 script = ExtResource("2_3ndlp")
 
 [node name="TitleLable" parent="." index="1"]
+offset_top = 2.0
+offset_bottom = 80.0
 text = "You have reached the final level."
+
+[node name="InfoLabel" parent="." index="2"]
+offset_top = 91.0
+offset_bottom = 113.0
+text = "Level up! 
++20 hp
++5 mp"
+
+[node name="StartButton" parent="." index="3"]
+offset_top = 43.0
+offset_bottom = 56.0
