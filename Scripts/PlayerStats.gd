@@ -68,9 +68,9 @@ func _ready():
 	action_buttons.append(load("res://Scenes/sword_action_button.tscn")) 
 	action_buttons.append(load("res://Scenes/heal_action_button.tscn")) 
 	action_buttons.append(load("res://Scenes/meditate_button.tscn")) 
-	action_buttons.append(load("res://Scenes/drain_action_button.tscn")) 
-	action_buttons.append(load("res://Scenes/fireball_action_button.tscn"))
-	action_buttons.append(load("res://Scenes/Action Buttons/blight.tscn"))
+#	action_buttons.append(load("res://Scenes/drain_action_button.tscn")) 
+#	action_buttons.append(load("res://Scenes/fireball_action_button.tscn"))
+#	action_buttons.append(load("res://Scenes/Action Buttons/blight.tscn"))
 	action_buttons.append(load("res://Scenes/Action Buttons/rend.tscn"))  
 	
 

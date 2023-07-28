@@ -8,6 +8,8 @@
 [node name="DrainActionButton" instance=ExtResource("1_8x22l")]
 text = "DRAIN"
 script = ExtResource("2_x7amq")
+damage = 6
+mp_cost = 4
 
 [node name="HoverInfo" parent="." index="0"]
 description = "Costs 3 mp, Deals 3 damage

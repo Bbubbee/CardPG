@@ -110,6 +110,7 @@ _data = {
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_qwbgn")
+heal_amount = 6
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_y78ws")

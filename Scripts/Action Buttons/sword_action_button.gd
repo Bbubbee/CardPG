@@ -4,16 +4,18 @@ const SLASH = preload("res://Scenes/slash.tscn")
 
 @onready var bonus_sfx = $BonusSfx
 
+# OVERRIDDEN
 func _ready():
 	if PlayerStats.has_upgraded_sword:
 		text = "SWORD+"
-		$HoverInfo.description = "Deals "+str(damage)+" dmg, Restores 2 mp"
+		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE_UPGRADED)+" dmg, Restores 2 mp"
 	else:
-		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE)+" dmg, Restores 2 mp"
+		$HoverInfo.description = "Deals "+str(damage)+" dmg, Restores 2 mp"
 		text = "SWORD"
 	
 # OVERRIDDEN	
-func MainEffect(enemy): 
+func MainEffect(): 
+	var enemy = battle_units.enemy
 	var player = PlayerStats
 
 	if enemy and player: 

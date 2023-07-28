@@ -9,14 +9,14 @@ func _on_pressed():
 	var player = PlayerStats
 	
 	if enemy and player: 
-		if player.mp >= 3: 
+		if player.mp >= mp_cost: 
 			CreateDrain(enemy.global_position)
 			sound_effect.play()
 			$SoundEffect2.play()
-			enemy.TakeDamage(player.DRAIN_DAMAGE)
-			player.mp -= 3
-			player.hp += 3
-			player.ap -= 1
+			enemy.TakeDamage(damage)
+			player.mp -= mp_cost
+			player.hp += damage
+			player.ap -= ap_cost
 	
 func CreateDrain(pos):
 	var drain = DRAIN.instantiate()

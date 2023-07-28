@@ -6,4 +6,6 @@ func _ready():
 	information_text.text = story_text.intersection_six[story_text.intersection_position]
 	choice_buttons.hide()
 	next_button.show() 
-	
+
+func _on_next_button_pressed():
+	LevelManager.GoToBoss()

@@ -1,7 +1,7 @@
 extends Node
 
 
-var current_room = 0
+var current_room = 11
 var current_level = 1
 
 
@@ -45,3 +45,6 @@ func ShowNextScene():
 		_: 
 			# Basic room. Fight an enemy!
 			SceneTransition.ChangeScene("res://Scenes/battle.tscn") 
+
+func GoToBoss(): 
+	SceneTransition.ChangeScene("res://Scenes/boss_battle.tscn") 

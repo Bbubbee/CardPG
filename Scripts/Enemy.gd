@@ -8,6 +8,7 @@ signal action_done
 
 @export var attack_damage: int = 4
 @export var max_hp: int = 35 
+@export var heal_amount: int = 5
 
 @onready var damage_taken_label = preload("res://Scenes/damage_taken_label.tscn")
 @onready var hp_label = $HealthLabel
@@ -46,14 +47,24 @@ func StartTurn():
 
 # OVERRIDE for other enemies. May add another base action.
 # You have to emit signal "action_done" after each potential action! 
+# This function will heal (1/3) and attack (2/3)
 func ChooseAnAction():
 	randomize()
-	var r = randi_range(0, 1)
+	var r = randi_range(0, 2)
 	if r == 1: 
-		Attack()
+		Heal()
 	else: 
 		Attack()
 
+func Heal(): 
+	animation_player.play("Shake") 
+	await animation_player.animation_finished  
+	animation_player.play("Shake") 
+	await animation_player.animation_finished  
+	hp += heal_amount
+	ShowDamageHealed(heal_amount)
+	emit_signal("action_done")
+	
 		
 func Attack() -> void:
 	animation_player.play("Attack")  # Calls DealDamage().
@@ -87,6 +98,11 @@ func Dies():
 	
 func IsDead():
 	return hp <= 0  # If dead return true.
+	
+func ShowDamageHealed(amount):
+	var heal_label = damage_taken_label.instantiate()
+	hp_label.add_child(heal_label)
+	heal_label.ShowStatIncreased("+"+str(amount))
 	
 func ShowDamageTaken(damage):
 	var damage_label = damage_taken_label.instantiate()

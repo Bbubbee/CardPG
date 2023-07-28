@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6f675o2inv7j"]
+
+[ext_resource type="PackedScene" uid="uid://cy2ytcema5j74" path="res://Scenes/battle.tscn" id="1_gn44x"]
+[ext_resource type="Script" path="res://Scenes/boss_battle.gd" id="2_uphop"]
+
+[node name="BossBattle" instance=ExtResource("1_gn44x")]
+script = ExtResource("2_uphop")

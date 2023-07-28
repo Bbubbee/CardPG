@@ -6,7 +6,8 @@
 [node name="Rend" instance=ExtResource("1_jm5il")]
 text = "REND"
 script = ExtResource("2_wlp01")
-damage = 12
+damage = 101
+ap_cost = 0
 
 [node name="HoverInfo" parent="." index="0"]
 description = "Slashes with a holy light

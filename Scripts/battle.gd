@@ -49,7 +49,7 @@ func ReadyShield():
 
 func _exit_tree():
 	PlayerStats.ap = PlayerStats.max_ap
-	PlayerStats.intersection += 1
+#	PlayerStats.intersection += 1
 	battle_units.battle_scene = null
 	
 		
