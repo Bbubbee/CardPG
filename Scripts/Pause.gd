@@ -16,6 +16,9 @@ func _on_button_pressed():
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
 
+func _on_button_mouse_entered():
+	button_sfx.play()
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		var new_pause_state = not get_tree().paused 
@@ -28,13 +31,19 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 
-func _on_main_menu_button_mouse_entered():
-	button_sfx.play()
-
-
 func _on_quit_button_mouse_entered():
 	button_sfx.play()
 
 
-func _on_button_mouse_entered():
+func _on_restart_level_pressed():
+	button_sfx.play()
+	
+	var new_pause_state = not get_tree().paused 
+	get_tree().paused = new_pause_state
+	visible = new_pause_state
+	
+	PlayerStats.RestoreStats()
+	LevelManager.RestartLevel()
+
+func _on_restart_level_mouse_entered():
 	button_sfx.play()

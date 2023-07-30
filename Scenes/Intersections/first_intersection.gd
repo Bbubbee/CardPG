@@ -9,16 +9,18 @@ func _ready():
 func _process(_delta):
 	information_text.text = story_text.intersection_one[story_text.intersection_position]
 
-func _on_choice_button_a_pressed():
+func ButtonAEffect():
 	story_text.intersection_position = "option a"
 	$Control/ButtonChoicesContainer.hide()
 	$Control/NextButton.show()
-	PlayerStats.AddAction(load("res://Scenes/drain_action_button.tscn"))
+	$UnlockSfx.play()
+	PlayerStats.action_dictionary["drain"] = load("res://Scenes/drain_action_button.tscn")
 
 
-func _on_choice_button_b_pressed():
+func ButtonBEffect():
 	story_text.intersection_position = "option b"
 	$Control/ButtonChoicesContainer.hide()
 	$Control/NextButton.show() 
-	PlayerStats.AddAction(load("res://Scenes/fireball_action_button.tscn"))
+	$UnlockSfx.play()
+	PlayerStats.action_dictionary["fireball"] = load("res://Scenes/fireball_action_button.tscn")
 

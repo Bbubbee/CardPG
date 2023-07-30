@@ -6,5 +6,38 @@
 [node name="SixthIntersection" instance=ExtResource("1_iw2vs")]
 script = ExtResource("2_symy3")
 
+[node name="Dungeon" parent="." index="0"]
+position = Vector2(45, 40.5)
+scale = Vector2(1, 1.49375)
+
+[node name="InformationPanel" parent="Control" index="0"]
+visible = false
+
 [node name="InformationText" parent="Control/InformationPanel" index="0"]
+visible = false
 text = "This is the sixth intersection"
+
+[node name="ButtonChoicesContainer" parent="Control" index="1"]
+visible = false
+
+[node name="NextButton" parent="Control" index="2"]
+visible = true
+offset_left = -37.0
+offset_top = -35.0
+offset_right = 37.0
+offset_bottom = -17.0
+
+[node name="Label" type="Label" parent="Control" index="3"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 27.0
+offset_right = 83.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 7
+text = "This is your last respite.
+Ahead lies the grim beast!
+
+HP and MP restored"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

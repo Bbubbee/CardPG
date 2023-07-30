@@ -10,14 +10,14 @@ func _ready():
 func _process(_delta):
 	information_text.text = story_text.intersection_two[story_text.intersection_position]
 
-func _on_choice_button_a_pressed():
+func ButtonAEffect():
 	story_text.intersection_position = "option a"
 	PlayerStats.skele_route = true
 	choice_buttons.hide()
 	next_button.show() 
 
 
-func _on_choice_button_b_pressed():
+func ButtonBEffect():
 	story_text.intersection_position = "option b"
 	choice_buttons.hide()
 	next_button.show() 

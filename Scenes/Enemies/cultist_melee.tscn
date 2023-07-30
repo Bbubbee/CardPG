@@ -4,8 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://okcqts88hlhq" path="res://Assets/Animations/Enemies/cultist_melee.png" id="2_exa56"]
 
 [node name="CultistMelee" instance=ExtResource("1_5bv4d")]
-attack_damage = 9
+attack_damage = 11
+max_hp = 40
+heal_amount = 15
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_exa56")
+
+[node name="HoverInfo" parent="." index="3"]
+custom_minimum_size = Vector2(23.82, 34.77)
+description = "A cultist assassin wielding a long, twisted blade. "

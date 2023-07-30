@@ -214,10 +214,10 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuButton" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
+[node name="RestartLevel" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "START AGAIN"
+text = "RESTART LEVEL"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Pause/VBoxContainer"]
 layout_mode = 2
@@ -277,10 +277,21 @@ offset_top = -6.0
 offset_right = -10.0
 offset_bottom = -9.0
 description = "Shield 
-Blocks 2 damage"
+Blocks 4 DMG. Restore 3 MP on block."
 
+[node name="ButtonSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_0qoyt")
+volume_db = -10.0
+pitch_scale = 8.0
+
+[node name="SelectSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_k7gi0")
+volume_db = -8.0
+
+[connection signal="mouse_entered" from="UI/CenterContainer/NextRoomButton" to="." method="_on_next_room_button_mouse_entered"]
 [connection signal="pressed" from="UI/CenterContainer/NextRoomButton" to="." method="_on_next_room_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/Pause/VBoxContainer/MainMenuButton" to="CanvasLayer/Pause" method="_on_main_menu_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/VBoxContainer/RestartLevel" to="CanvasLayer/Pause" method="_on_restart_level_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/RestartLevel" to="CanvasLayer/Pause" method="_on_restart_level_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Pause/VBoxContainer/QuitButton" to="CanvasLayer/Pause" method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/QuitButton" to="CanvasLayer/Pause" method="_on_quit_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Button" to="CanvasLayer/Pause" method="_on_button_mouse_entered"]

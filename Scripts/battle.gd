@@ -72,6 +72,7 @@ func StartEnemyTurn():
 
 
 func _on_next_room_button_pressed():
+	$SelectSfx.play()
 	next_room_button.disabled = true 
 	
 	LevelManager.GoToNextIntersection()
@@ -79,11 +80,6 @@ func _on_next_room_button_pressed():
 func _on_enemy_died(): 
 	next_room_button.show()
 	player_battle_action_buttons.hide() 
-	
 
-
-	
-	
-	
-
-	
+func _on_next_room_button_mouse_entered():
+	$ButtonSfx.play()

@@ -12,15 +12,17 @@ func _process(_delta):
 	information_text.text = story_text.intersection_three[story_text.intersection_position]
 
 
-func _on_choice_button_a_pressed():
+func ButtonAEffect():
 	story_text.intersection_position = "option a"
 	PlayerStats.has_upgraded_sword = true 
+	$UnlockSfx.play()
 	choice_buttons.hide()
 	next_button.show() 
 
 
-func _on_choice_button_b_pressed():
+func ButtonBEffect():
 	story_text.intersection_position = "option b"
 	PlayerStats.has_shield = true
+	$UnlockSfx.play()
 	choice_buttons.hide()
 	next_button.show() 

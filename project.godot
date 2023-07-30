@@ -13,7 +13,7 @@ config_version=5
 config/name="RetroPG"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/logo.ico"
 
 [autoload]
 
@@ -21,6 +21,7 @@ SceneTransition="*res://Scenes/scene_transition.tscn"
 PlayerStats="*res://Scripts/PlayerStats.gd"
 Constants="*res://Scripts/CONSTANTS.gd"
 LevelManager="*res://Scripts/level_manager.gd"
+BgMusic="*res://Scenes/bg_music.tscn"
 
 [display]
 

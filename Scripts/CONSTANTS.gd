@@ -1,3 +1,4 @@
 extends Node
 
-# Player 
+class_name constants
+

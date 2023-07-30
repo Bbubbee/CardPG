@@ -5,8 +5,8 @@
 
 [node name="Skeleton" instance=ExtResource("1_iem2s")]
 attack_damage = 8
-max_hp = 30
-heal_amount = 4
+max_hp = 28
+heal_amount = 10
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.8, 0.8)
@@ -14,4 +14,8 @@ texture = ExtResource("2_riyck")
 
 [node name="HoverInfo" parent="." index="3"]
 custom_minimum_size = Vector2(16.975, 36.3)
-description = "A spooky skeleton."
+offset_left = -11.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = 18.3
+description = "A lanky skeleton. It clicks with each move. "

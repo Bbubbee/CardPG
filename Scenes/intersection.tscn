@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://djb0xfvsx68s7"]
+[gd_scene load_steps=6 format=3 uid="uid://djb0xfvsx68s7"]
 
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_5qqwn"]
 [ext_resource type="Script" path="res://Scripts/intersection.gd" id="1_ul8so"]
+[ext_resource type="AudioStream" uid="uid://dx22fqk0wxg2q" path="res://Assets/Audio/Buttons/click-button-140881.mp3" id="3_nvr10"]
+[ext_resource type="AudioStream" uid="uid://b7mbf2bvw74pv" path="res://Assets/Audio/Buttons/button.mp3" id="4_1nvj8"]
+[ext_resource type="AudioStream" uid="uid://d28trwftaagpp" path="res://Assets/Audio/short-success.mp3" id="5_7kx8n"]
 
 [node name="Intersection" type="Node"]
 script = ExtResource("1_ul8so")
@@ -84,6 +87,22 @@ grow_vertical = 0
 size_flags_horizontal = 3
 text = "CONTINUE"
 
+[node name="ButtonSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nvr10")
+volume_db = -10.0
+pitch_scale = 8.0
+
+[node name="SelectSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1nvj8")
+volume_db = -8.0
+
+[node name="UnlockSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_7kx8n")
+volume_db = -4.0
+
+[connection signal="mouse_entered" from="Control/ButtonChoicesContainer/ChoiceButtonA" to="." method="_on_choice_button_a_mouse_entered"]
 [connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonA" to="." method="_on_choice_button_a_pressed"]
+[connection signal="mouse_entered" from="Control/ButtonChoicesContainer/ChoiceButtonB" to="." method="_on_choice_button_b_mouse_entered"]
 [connection signal="pressed" from="Control/ButtonChoicesContainer/ChoiceButtonB" to="." method="_on_choice_button_b_pressed"]
+[connection signal="mouse_entered" from="Control/NextButton" to="." method="_on_next_button_mouse_entered"]
 [connection signal="pressed" from="Control/NextButton" to="." method="_on_next_button_pressed"]

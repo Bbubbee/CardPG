@@ -5,7 +5,9 @@ const DRAIN = preload("res://Scenes/drain.tscn")
 
 @export var heal_amount: int = 3 
 
-
+func _ready():
+	hover_info.description = "Deals "+str(damage)+" DMG. Heals "+str(heal_amount)+" HP. Costs "+str(mp_cost)+" MP."
+	
 func _on_pressed(): 
 	var enemy = battle_units.enemy
 	var player = PlayerStats

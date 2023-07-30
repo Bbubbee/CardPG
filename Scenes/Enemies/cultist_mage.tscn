@@ -6,9 +6,18 @@
 
 [node name="CultistMage" instance=ExtResource("1_baunt")]
 script = ExtResource("2_7httu")
-attack_damage = 8
-max_hp = 40
+attack_damage = 10
+max_hp = 45
+heal_amount = 11
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_mtnm5")
+
+[node name="HoverInfo" parent="." index="3"]
+custom_minimum_size = Vector2(26.5, 35.15)
+offset_left = -16.0
+offset_top = -18.0
+offset_right = 11.0
+offset_bottom = 17.15
+description = "A hooded figure with purple purple flames dancing from it's hand."

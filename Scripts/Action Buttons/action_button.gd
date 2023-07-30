@@ -27,13 +27,14 @@ func _on_pressed():
 # This deals damage to an enemy. It will reduce the players ap and mp accordingly.
 func MainEffect(): 
 	var enemy = battle_units.enemy
-	enemy.TakeDamage(damage)
-	# Remember: Do these after the main effect.	 
-	# Makes it so these ONLY happens if the main effect actually occurs. 
-	# Some actions (like heal) will only happen if their hp < max_hp.
-	PlaySfx() 
-	PlayerStats.ap -= ap_cost 
-	PlayerStats.mp -= mp_cost
+	if enemy:
+		enemy.TakeDamage(damage)
+		# Remember: Do these after the main effect.	 
+		# Makes it so these ONLY happens if the main effect actually occurs. 
+		# Some actions (like heal) will only happen if their hp < max_hp.
+		PlaySfx() 
+		PlayerStats.ap -= ap_cost 
+		PlayerStats.mp -= mp_cost
 
 
 # OVERRIDE - If there are more or no sound effect to play

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dim4havfaaoc0"]
+[gd_scene load_steps=12 format=3 uid="uid://dim4havfaaoc0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_qwbgn"]
 [ext_resource type="Texture2D" uid="uid://ypc0hl0s73cm" path="res://Assets/Images/Rat.png" id="2_y78ws"]
 [ext_resource type="PackedScene" uid="uid://c8emammtcxswt" path="res://Scenes/hover_info.tscn" id="3_ux1kq"]
+[ext_resource type="AudioStream" uid="uid://bpotab7hx3mf8" path="res://Assets/Audio/damage.mp3" id="4_6i1at"]
+[ext_resource type="AudioStream" uid="uid://bjcveke3j0wy" path="res://Assets/Audio/regen.mp3" id="5_jjqsk"]
 
 [sub_resource type="Animation" id="Animation_o417c"]
 resource_name = "Attack"
@@ -131,3 +133,11 @@ libraries = {
 }
 
 [node name="HoverInfo" parent="." instance=ExtResource("3_ux1kq")]
+
+[node name="DealDamage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6i1at")
+
+[node name="HealSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jjqsk")
+volume_db = -10.0
+pitch_scale = 0.5

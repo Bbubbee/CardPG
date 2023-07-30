@@ -7,10 +7,11 @@
 [node name="MeditateButton" instance=ExtResource("1_5jhuf")]
 text = "MED"
 script = ExtResource("2_rwt74")
+mp_restore = 6
 
 [node name="HoverInfo" parent="." index="0"]
 description = "Restores 6 mp"
 
 [node name="SoundEffect" parent="." index="2"]
 stream = ExtResource("4_7hgrr")
-volume_db = -5.0
+volume_db = -6.0

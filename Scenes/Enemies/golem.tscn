@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://c1hqabkg8j1eb" path="res://Assets/Animations/Enemies/stone_golem.png" id="2_os488"]
 
 [node name="Golem" instance=ExtResource("1_f65gm")]
-attack_damage = 6
+attack_damage = 7
 max_hp = 40
-heal_amount = 5
+heal_amount = 9
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(1.25, 1.25)
@@ -14,4 +14,4 @@ texture = ExtResource("2_os488")
 
 [node name="HoverInfo" parent="." index="3"]
 custom_minimum_size = Vector2(51.69, 32.245)
-description = "A stone golem"
+description = "A stone golem with runes emblazoned on it. "

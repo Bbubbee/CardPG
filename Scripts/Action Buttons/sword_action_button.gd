@@ -8,9 +8,9 @@ const SLASH = preload("res://Scenes/slash.tscn")
 func _ready():
 	if PlayerStats.has_upgraded_sword:
 		text = "SWORD+"
-		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE_UPGRADED)+" dmg, Restores 2 mp"
+		$HoverInfo.description = "Deals "+str(PlayerStats.SLASH_DAMAGE_UPGRADED)+" DMG. Restores 3 MP."
 	else:
-		$HoverInfo.description = "Deals "+str(damage)+" dmg, Restores 2 mp"
+		$HoverInfo.description = "Deals "+str(damage)+" DMG. Restores 2 MP."
 		text = "SWORD"
 	
 # OVERRIDDEN	
@@ -22,10 +22,13 @@ func MainEffect():
 		CreateSlash(enemy.global_position) 
 		if player.has_upgraded_sword:
 			enemy.TakeDamage(player.SLASH_DAMAGE_UPGRADED)
+			player.mp += 3
 		else: 
 			enemy.TakeDamage(damage)
-		player.mp += 2
+			player.mp += 2
+		
 		player.ap -= 1  
+		PlaySfx() 
 		
 
 # OVERRIDDEN		

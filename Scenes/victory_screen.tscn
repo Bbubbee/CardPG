@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3usg1dw2yqtt"]
+[gd_scene load_steps=6 format=3 uid="uid://c3usg1dw2yqtt"]
 
 [ext_resource type="Script" path="res://Scenes/victory_screen.gd" id="1_fxl3f"]
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_iutkj"]
+[ext_resource type="AudioStream" uid="uid://dx22fqk0wxg2q" path="res://Assets/Audio/Buttons/click-button-140881.mp3" id="3_siwdu"]
+[ext_resource type="AudioStream" uid="uid://b7mbf2bvw74pv" path="res://Assets/Audio/Buttons/button.mp3" id="4_x1ba2"]
+[ext_resource type="AudioStream" uid="uid://htcihwoi0n76" path="res://Assets/Audio/victory.wav" id="5_4lx7w"]
 
 [node name="VictoryScreen" type="Control"]
 layout_mode = 3
@@ -13,8 +16,8 @@ grow_vertical = 2
 script = ExtResource("1_fxl3f")
 
 [node name="Dungeon" type="Sprite2D" parent="."]
-position = Vector2(45, 45.5)
-scale = Vector2(1, 1.43125)
+position = Vector2(45, 45.75)
+scale = Vector2(1, 1.47812)
 texture = ExtResource("1_iutkj")
 
 [node name="Title" type="Label" parent="."]
@@ -96,5 +99,21 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "QUIT GAME"
 
+[node name="ButtonSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_siwdu")
+volume_db = -10.0
+pitch_scale = 8.0
+
+[node name="SelectSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_x1ba2")
+volume_db = -8.0
+
+[node name="Victory" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4lx7w")
+volume_db = -8.0
+autoplay = true
+
+[connection signal="mouse_entered" from="VBoxContainer/PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

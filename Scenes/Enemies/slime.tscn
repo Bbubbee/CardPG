@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8fjp1tnq8wjn" path="res://Assets/Images/Slime.png" id="2_angtm"]
 
 [node name="Slime" instance=ExtResource("1_fj86b")]
-attack_damage = 3
+heal_amount = 8
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_angtm")

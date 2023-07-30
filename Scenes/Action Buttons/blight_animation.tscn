@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://3npkg4m64g0r"]
+
+[ext_resource type="Texture2D" uid="uid://dgkva711ejbvh" path="res://Assets/Animations/Actions/blight_v2-Sheet.png" id="1_felv3"]
+[ext_resource type="Script" path="res://Scenes/Action Buttons/blight_animation.gd" id="1_o5e2v"]
+
+[sub_resource type="Animation" id="Animation_4xgcc"]
+resource_name = "Blight"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_srq5v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uag65"]
+_data = {
+"Blight": SubResource("Animation_4xgcc"),
+"RESET": SubResource("Animation_srq5v")
+}
+
+[node name="BlightAnimation" type="Node2D"]
+script = ExtResource("1_o5e2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_felv3")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Blight"
+libraries = {
+"": SubResource("AnimationLibrary_uag65")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

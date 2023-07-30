@@ -9,14 +9,15 @@ func _ready():
 func _process(_delta):
 	information_text.text = story_text.intersection_four[story_text.intersection_position]
 
-func _on_choice_button_a_pressed():
+func ButtonAEffect():
 	story_text.intersection_position = "option a"
 	choice_buttons.hide()
 	next_button.show() 
 
 
-func _on_choice_button_b_pressed():
+func ButtonBEffect():
 	story_text.intersection_position = "option b"
-	PlayerStats.AddAction(load("res://Scenes/Action Buttons/crux.tscn"))
+	PlayerStats.action_dictionary["crux"] = load("res://Scenes/Action Buttons/crux.tscn")
+	$UnlockSfx.play()
 	choice_buttons.hide()
 	next_button.show() 

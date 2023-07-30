@@ -9,13 +9,17 @@ func _ready():
 func _process(_delta):
 	information_text.text = story_text.intersection_five[story_text.intersection_position]
 
-func _on_choice_button_a_pressed():
+func ButtonAEffect():
 	story_text.intersection_position = "option a"
+	PlayerStats.action_dictionary["rend"] = load("res://Scenes/Action Buttons/rend.tscn")
+	$UnlockSfx.play()
 	choice_buttons.hide()
 	next_button.show() 
 
 
-func _on_choice_button_b_pressed():
+func ButtonBEffect():
 	story_text.intersection_position = "option b"
+	PlayerStats.action_dictionary["blight"] = load("res://Scenes/Action Buttons/blight.tscn")
+	$UnlockSfx.play()
 	choice_buttons.hide()
 	next_button.show() 

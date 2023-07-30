@@ -20,17 +20,28 @@ var mp = max_mp:
 var action_buttons : Array[PackedScene]
 var enemies_to_face : Array[PackedScene] 
 
+var action_dictionary = {
+	["sword"]: load("res://Scenes/sword_action_button.tscn"),
+	["heal"]: load("res://Scenes/heal_action_button.tscn"),
+	["meditate"]: load("res://Scenes/meditate_button.tscn"),
+#	["bomba"]: load("res://Scenes/Action Buttons/bomba.tscn"),
+#	["drain"]: load("res://Scenes/drain_action_button.tscn"),
+#	["fireball"]: load("res://Scenes/fireball_action_button.tscn"),
+#	["rend"]: load("res://Scenes/Action Buttons/rend.tscn"),
+#	["blight"]: load("res://Scenes/Action Buttons/blight.tscn"),
+#	["crux"]: load("res://Scenes/Action Buttons/crux.tscn")
+
+}
+
 # Action numbers. Just damage because I don't want to have too many clogging memory.
 # Refer to their action buttons to see their cost and mp use. 
-var SLASH_DAMAGE = 4
+var SLASH_DAMAGE = 8
 var FIREBALL_DAMAGE = 9
 var DRAIN_DAMAGE = 3
-
-
 var has_upgraded_sword = false
-var SLASH_DAMAGE_UPGRADED = 200
+var SLASH_DAMAGE_UPGRADED = 8
 var has_shield = false
-var SHIELD_BLOCK = 2
+var SHIELD_BLOCK = 3
 var skele_route = false
 
 var player_level = 1
@@ -77,6 +88,7 @@ func _ready():
 func TakeDamage(dmg):
 	if has_shield:
 		hp -= dmg-SHIELD_BLOCK
+		mp += 3
 	else:
 		hp -= dmg
 		

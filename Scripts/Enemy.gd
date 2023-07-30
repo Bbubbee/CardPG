@@ -59,6 +59,7 @@ func ChooseAnAction():
 func Heal(): 
 	animation_player.play("Shake") 
 	await animation_player.animation_finished  
+	$HealSound.play()
 	animation_player.play("Shake") 
 	await animation_player.animation_finished  
 	hp += heal_amount
@@ -73,6 +74,7 @@ func Attack() -> void:
 	
 	
 func DealDamage(): 
+	$DealDamage.play()
 	PlayerStats.TakeDamage(attack_damage)
 
 

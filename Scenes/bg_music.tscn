@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5vipnhesg1u5"]
+
+[ext_resource type="AudioStream" uid="uid://dwfvsu4lpp1pt" path="res://Assets/Audio/caves-of-dawn-10376.mp3" id="1_dp4yf"]
+[ext_resource type="Script" path="res://Scripts/bg_music.gd" id="2_8jnbm"]
+
+[node name="BGMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_dp4yf")
+volume_db = -10.0
+autoplay = true
+script = ExtResource("2_8jnbm")

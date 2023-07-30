@@ -43,9 +43,9 @@ var thoughts = "
 
 var intersection_four = {
 	"start": "Ahead you see a crowd of hooded figures chanting. They encircle a deceased doe laying on archaic symbols.
-	\nDo you intervene (A) or sneak by (B)?",
+	\nDo you intervene (A) or wait until it's over (B)?",
 	"option a": "You storm the ritual with a flurry of swings and spells. After a brief retailliation they disperse into the dark. You pick up the doe and rest it in a remote area of the dungeon.", 
-	"option b": "You sneak through the darkness and enter a room. A long staff lies on a pedestal. Ebony wood runs along it's shaft and wraps around a glowing crystal.
+	"option b": "You await the end of the ceremony in the darkness. The symbols glow a bright purple before vanishing, along with the doe. The crowd disperses, and you steal an ebony staff holding a purple crystal.
 	\nGained: CRUX", 
 }
 

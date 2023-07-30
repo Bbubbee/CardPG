@@ -1,12 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg85t3cf01v3f"]
+[gd_scene load_steps=4 format=3 uid="uid://cg85t3cf01v3f"]
 
 [ext_resource type="PackedScene" uid="uid://cmn8h6bulwl3c" path="res://Scenes/action_button.tscn" id="1_41i70"]
+[ext_resource type="Script" path="res://Scenes/Action Buttons/blight.gd" id="2_cl6jk"]
+[ext_resource type="AudioStream" uid="uid://btfxxj0pegddd" path="res://Assets/Audio/magic-strike-5856.mp3" id="3_2c57q"]
 
 [node name="Blight" instance=ExtResource("1_41i70")]
 text = "BLIGHT"
-damage = 12
-mp_cost = 5
+script = ExtResource("2_cl6jk")
+heal_amount = 7
+damage = 14
+mp_cost = 10
 
 [node name="HoverInfo" parent="." index="0"]
 description = "\"Piercing ray of light\" 
 "
+
+[node name="SoundEffect" parent="." index="2"]
+stream = ExtResource("3_2c57q")
+volume_db = -8.0

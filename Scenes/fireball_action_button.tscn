@@ -10,7 +10,7 @@ theme_override_font_sizes/font_size = 5
 text = "FIREBALL"
 icon_alignment = 1
 script = ExtResource("2_g10ud")
-damage = 11
+damage = 14
 mp_cost = 7
 
 [node name="HoverInfo" parent="." index="0"]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhl5vpxl6tnur"]
+[gd_scene load_steps=6 format=3 uid="uid://dhl5vpxl6tnur"]
 
 [ext_resource type="Texture2D" uid="uid://dwkqq0vvjc80s" path="res://Assets/Images/Dungeon.png" id="1_irwrb"]
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_phla6"]
+[ext_resource type="AudioStream" uid="uid://dx22fqk0wxg2q" path="res://Assets/Audio/Buttons/click-button-140881.mp3" id="3_p1ehk"]
+[ext_resource type="AudioStream" uid="uid://b7mbf2bvw74pv" path="res://Assets/Audio/Buttons/button.mp3" id="4_ahhef"]
+[ext_resource type="AudioStream" uid="uid://0xmmtyski4al" path="res://Assets/Audio/defeat.wav" id="5_kxjlk"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -93,5 +96,21 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "QUIT GAME"
 
+[node name="ButtonSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_p1ehk")
+volume_db = -10.0
+pitch_scale = 8.0
+
+[node name="SelectSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ahhef")
+volume_db = -8.0
+
+[node name="Defeat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kxjlk")
+volume_db = -9.0
+autoplay = true
+
+[connection signal="mouse_entered" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
