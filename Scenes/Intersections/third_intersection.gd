@@ -15,6 +15,7 @@ func _process(_delta):
 func ButtonAEffect():
 	story_text.intersection_position = "option a"
 	PlayerStats.has_upgraded_sword = true 
+	PlayerStats.hp = max(1, PlayerStats.hp-5)
 	$UnlockSfx.play()
 	choice_buttons.hide()
 	next_button.show() 

@@ -29,7 +29,7 @@ var intersection_three = {
 		\nDo you help it (A) or cautiously leave? (B)",
 	"option a": 
 		"You slide the blade from it's body. It lets out a wild howl and mauls you. It scurries away.
-		\n-9 health 
+		\n-5 health 
 		\nGained: UPGRADED SWORD", 
 	"option b": 
 		"You creep around the edges of the room. It's eyes follows you eerily. Suddenly it pounces at you, but you swiftly slip into a room and slam the door. Inside, you find a hefty wooden shield.

@@ -15,6 +15,7 @@ func MainEffect():
 		PlayAnimation(enemy.global_position) 		
 
 		PlaySfx() 
+		PlayerStats.hp += heal_amount
 		PlayerStats.ap -= ap_cost 
 		PlayerStats.mp -= mp_cost
 

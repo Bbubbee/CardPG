@@ -7,7 +7,7 @@ signal hp_changed(val)
 signal ap_changed(val)
 signal mp_changed(val)  
 
-var max_hp = 25
+var max_hp = 25  # Start: 25 
 var hp = max_hp: 
 	set = SetHp
 var max_ap = 3
